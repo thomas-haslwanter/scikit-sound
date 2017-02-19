@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='scikit-sound',
-    version="0.1.0",
+    version="0.1.1",
     packages=find_packages(),
 
     include_package_data=True,
@@ -22,7 +22,6 @@ setup(
     keywords     = 'sound auditory signals',
     url          = 'http://work.thaslwanter.at/sksound/html',
     classifiers  = ['Development Status :: 4 - Beta',
-                 'Programming Language :: Python :: 2',
                  'Programming Language :: Python :: 3',
                  'Intended Audience :: Developers',
                  'Intended Audience :: Science/Research',
