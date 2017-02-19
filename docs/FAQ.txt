@@ -1,0 +1,5 @@
+Do I need FFMPEG?
+=================
+No. Python is well equipped to handle WAV-files. However, if you want to work
+with other file formats, installing the free open source software FFMPEG is
+your best option.
