@@ -52,7 +52,7 @@ the root directory of the package, and type
 
 Dependencies
 ^^^^^^^^^^^^
-numpy, scipy, easygui, json, appdirs, sounddevice
+numpy, scipy, easygui, appdirs, sounddevice
 
 Testing
 -------

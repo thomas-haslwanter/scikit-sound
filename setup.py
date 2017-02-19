@@ -10,7 +10,7 @@ setup(
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
-    install_requires=['docutils>=0.3', 'easygui'],
+    install_requires=['docutils>=0.3', 'easygui', 'appdirs', 'sounddevice'],
 
     # metadata for upload to PyPI
     author       = "Thomas Haslwanter",

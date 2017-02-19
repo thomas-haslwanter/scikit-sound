@@ -3,7 +3,7 @@
 
 Dependencies
 ------------
-numpy, scipy, 
+numpy, scipy, easygui, json, appdirs, sounddevice
 
 Homepage
 --------
