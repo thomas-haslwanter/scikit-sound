@@ -36,12 +36,6 @@ The simplest way to install *sksound* is
 
 >>> pip install scikit-sound
 
-
-**Note for Linux**: On Linux I use *Anaconda* for my Python installation.
-On that system I had to update *PortAudio* once for sound to work properly, with 
-
->>> conda install PortAudio
-
 For upgrading to the latest version of *sksound*, you have to type
 
 >>> pip install scikit-sound -U
@@ -58,7 +52,7 @@ the root directory of the package, and type
 
 Dependencies
 ^^^^^^^^^^^^
-numpy, scipy, easygui, appdirs, sounddevice
+numpy, scipy, easygui, appdirs, pygame
 
 Testing
 -------
@@ -87,7 +81,7 @@ Indices and tables
 
 .. note::
     | *Author:*     Thomas Haslwanter
-    | *Version:*    0.1.3
+    | *Version:*    0.1.4
     | *Date:*       Feb 2017
     | *email:*      thomas.haslwanter@fh-linz.at
     | *Copyright (c):*      2017, Thomas Haslwanter. All rights reserved.

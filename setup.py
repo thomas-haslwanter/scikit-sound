@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='scikit-sound',
-    version="0.1.3",
+    version="0.1.4",
     packages=find_packages(),
 
     include_package_data=True,
@@ -10,7 +10,7 @@ setup(
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
-    install_requires=['docutils>=0.3', 'easygui', 'appdirs', 'sounddevice'],
+    install_requires=['docutils>=0.3', 'easygui', 'appdirs', 'pygame'],
 
     # metadata for upload to PyPI
     author       = "Thomas Haslwanter",
