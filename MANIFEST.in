@@ -1,3 +1,3 @@
 include *.txt
 recursive-include docs *.*
-recursive-include sksound\tests *.py
+recursive-include sksound/tests *.mp3 *.wav
