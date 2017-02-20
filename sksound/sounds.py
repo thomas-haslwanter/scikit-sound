@@ -127,9 +127,12 @@ class FFMPEG_info:
         if ffmpeg_installed:
             ffmpeg_dir = easygui.diropenbox(msg='Please select the directory where FFMPEG (binary) is installed:')
             
-            self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
-            self.ffplay = os.path.join(ffmpeg_dir, 'ffplay.exe')
-            
+            if sys.platform=='win32':
+                self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
+                self.ffplay = os.path.join(ffmpeg_dir, 'ffplay.exe')
+            else:
+                self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg')
+                self.ffplay = os.path.join(ffmpeg_dir, 'ffplay')
             
             if not os.path.exists(self.ffmpeg):
                 print('Sorry, {0} does not exist!'.format(self.ffmpeg))
@@ -384,14 +387,14 @@ class Sound:
             if full_out_file is None:
                 print('Output discarded.')
                 return 0
-            else:
-                (outFile , outDir) = os.path.split(full_out_file)
+        else:
+            (outFile , outDir) = os.path.split(full_out_file)
 
-                write(str(full_out_file), int(self.rate), self.data)
-                print('Sounddata written to ' + outFile + ', with a sample rate of ' + str(self.rate))
-                print('OutDir: ' + outDir)
+            write(str(full_out_file), int(self.rate), self.data)
+            print('Sounddata written to ' + outFile + ', with a sample rate of ' + str(self.rate))
+            print('OutDir: ' + outDir)
 
-                return full_out_file
+            return full_out_file
     
     def get_info(self):
         '''
@@ -501,25 +504,25 @@ def main():
     #mySound.play()
     
     ## Test with self-generated data
-    #rate = 22050
-    #dt = 1./rate
-    #t = np.arange(0,0.5,dt)
-    #freq = 880
-    #x = np.sin(2*np.pi*freq*t)
-    #sounddata = np.int16(x*2**13)
+    rate = 22050
+    dt = 1./rate
+    t = np.arange(0,0.5,dt)
+    freq = 880
+    x = np.sin(2*np.pi*freq*t)
+    sounddata = np.int16(x*2**13)
     
-    #inSound = Sound(inData=sounddata, inRate=rate)
-    #inSound.summary()
-    #inSound.play()
+    inSound = Sound(inData=sounddata, inRate=rate)
+    inSound.summary()
+    inSound.play()
     
     ## Test if type conversion works
     #inSound2 = Sound(inData=x, inRate=rate)
     #inSound2.play()
     
     # Test with GUI
-    inSound = Sound()
-    inSound.play()
-    print(inSound.summary())
+    #inSound = Sound()
+    #inSound.play()
+    #print(inSound.summary())
     #out = inSound.get_info()
     #print(out)
     #inSound.write_wav()
