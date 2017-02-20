@@ -1,1 +1,1 @@
-v0.1.1, 19-Feb-2017 -- Initial release
+v0.1.2, 20-Feb-2017 -- Initial release
