@@ -20,8 +20,8 @@ Mac users using Anaconda should follow the instructions on
 
     seemed to work. Binaries are also available from
 
-        - http://www.evermeet.cx/ffmpeg/ffmpeg-2.1.4.7z
-        - http://www.evermeet.cx/ffplay/ffplay-2.1.4.7z
+        - http://www.evermeet.cx/ffmpeg/ffmpeg-3.2.4.7z
+        - http://www.evermeet.cx/ffplay/ffplay-3.2.4.7z
 
 Note that FFMPEG must be installed externally!
 Please install ffmpeg/ffplay in the following directory:
@@ -52,9 +52,11 @@ from scipy.io.wavfile import read, write
 import tempfile
 import subprocess
 import json
+import time
+
 import appdirs
 import easygui
-import sounddevice
+import pygame
 
 # The following construct is required since I want to run the module as a script
 # inside the thLib-directory
@@ -63,12 +65,13 @@ SCRIPT_DIR = os.path.realpath(os.path.dirname(__file__))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 # On Win playing sound works automatically
-# For the other packages you need the module "sounddevice"
-import sounddevice
+# For the other packages you need the module "pygame"
 
 if sys.platform=='win32':
     import winsound
     
+class NoFFMPEG_Error(Exception):
+    pass    
     
 class FFMPEG_info:
     '''
@@ -260,6 +263,7 @@ class Sound:
         -----
         * For non WAV-files, the file is first converted to WAV using
           FFMPEG, and then read in.
+        * If FFMPEG is not installed, non-WAV files produce a "sounds.NoFFMPEG_Error"
 
         Examples
         --------
@@ -277,7 +281,9 @@ class Sound:
         if ext[1:].lower() != 'wav':
             if self.info.ffmpeg == None:
                 print('Sorry, need FFMPEG for non-WAV files!')
-                exit()
+                self.rate = None
+                self.data = None
+                raise NoFFMPEG_Error
                 
             outFile = root + '.wav'
             cmd = [self.info.ffmpeg, '-i', inFile, outFile, '-y']
@@ -308,7 +314,7 @@ class Sound:
         Notes
         -----
         On "Windows" the module "winsound" is used; on other
-        platforms, the sound is played using "ffplay" from FFMPEG.
+        platforms, the sound is played using "pygame".
 
         Examples
         --------
@@ -326,15 +332,27 @@ class Sound:
                 if sys.platform=='win32':
                     winsound.PlaySound(tmpFile.name, winsound.SND_FILENAME)
                 else:
-                    cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', tmpFile.name]
-                    subprocess.run(cmd)
+                    pygame.init()
+                    pygame.mixer.music.load(tmpFile.name)
+                    pygame.mixer.music.play()
+                    time.sleep(self.duration)
+                    
+                    # If you want to use FFMPEG instead, use the following commands:
+                    #cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', tmpFile.name]
+                    #subprocess.run(cmd)
             elif os.path.exists(self.source):
                 print('Playing ' + self.source)
                 if sys.platform=='win32':
                     winsound.PlaySound(str(self.source), winsound.SND_FILENAME)
                 else:
-                    cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', self.source]
-                    subprocess.run(cmd)
+                    pygame.init()
+                    pygame.mixer.music.load(self.source)
+                    pygame.mixer.music.play()
+                    time.sleep(self.duration)
+                    
+                    # If you want to use FFMPEG instead, use the following commands:
+                    #cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', self.source]
+                    #subprocess.run(cmd)
         except SystemError:
             print('If you don''t have FFMPEG available, you can e.g. use installed audio-files. E.g.:')
             print('import subprocess')
@@ -496,12 +514,16 @@ def main():
     #ffmpeg.set()
     
     ### Import a file, and play the sound
-    #dataDir = r'C:\Users\p20529\Documents\Teaching\ETH\CSS\Exercises\Ex_Auditory\sounds\mp3'
-    #inFile = 'tiger.mp3'
+    dataDir = r'/home/thomas/Coding/scikit-sound/sksound/tests'
+    inFile = 'YouAreNotIt.mp3'
     
-    #fullFile = os.path.join(dataDir, inFile)
-    #mySound = Sound(fullFile)
-    #mySound.play()
+    fullFile = os.path.join(dataDir, inFile)
+    try:
+        mySound = Sound(fullFile)
+        mySound.play()
+        time.sleep(mySound.duration)
+    except NoFFMPEG_Error:
+        pass
     
     ## Test with self-generated data
     rate = 22050
@@ -514,6 +536,9 @@ def main():
     inSound = Sound(inData=sounddata, inRate=rate)
     inSound.summary()
     inSound.play()
+    time.sleep(inSound.duration)
+    
+    print('hi')
     
     ## Test if type conversion works
     #inSound2 = Sound(inData=x, inRate=rate)

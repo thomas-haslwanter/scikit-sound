@@ -28,8 +28,11 @@ class TestSequenceFunctions(unittest.TestCase):
         # Single channel, stereo, and mp3 input
         sound_files = ['peas.wav', 'tiger.wav', 'YouAreNotIt.mp3']
         for file in sound_files:
-            inSound = sounds.Sound(file)
-            inSound.play()
+            try:
+                inSound = sounds.Sound(file)
+                inSound.play()
+            except sounds.NoFFMPEG_Error:
+                pass
         
     def test_sound_select(self):
         # Test with GUI
