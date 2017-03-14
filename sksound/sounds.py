@@ -14,7 +14,7 @@ Mac users using Anaconda should follow the instructions on
 
         https://anaconda.org/soft-matter/ffmpeg
 
-    Otherwise, the tups under
+    Otherwise, the tips under
 
         https://github.com/fluent-ffmpeg/node-fluent-ffmpeg/wiki/Installing-ffmpeg-on-Mac-OS-X
 
@@ -35,8 +35,8 @@ Compatible with Python 2.x and 3.x
 '''
 
 '''
-Date:   Feb-2017
-Ver:    0.1
+Date:   March-2017
+Ver:    0.2
 Author: thomas haslwanter
 
 '''
@@ -56,7 +56,6 @@ import time
 
 import appdirs
 import easygui
-import pygame
 
 # The following construct is required since I want to run the module as a script
 # inside the thLib-directory
@@ -69,6 +68,8 @@ sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 if sys.platform=='win32':
     import winsound
+elif sys.platform == 'linux2':
+    import pygame
     
 class NoFFMPEG_Error(Exception):
     pass    
@@ -326,11 +327,17 @@ class Sound:
 
         try:
             if self.source is None:
+                # If there is no source-file, write the data to a temporary WAV-file ...
                 tmpFile = tempfile.NamedTemporaryFile(suffix='.wav', delete=False)
                 tmpFile.close()
                 self.write_wav(tmpFile.name)
+                
+                # ... and play that file
                 if sys.platform=='win32':
                     winsound.PlaySound(tmpFile.name, winsound.SND_FILENAME)
+                elif sys.platform == 'darwin':
+                    cmd = ['afplay', tmpFile.name]
+                    subprocess.run(cmd)
                 else:
                     pygame.init()
                     pygame.mixer.music.load(tmpFile.name)
@@ -340,10 +347,17 @@ class Sound:
                     # If you want to use FFMPEG instead, use the following commands:
                     #cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', tmpFile.name]
                     #subprocess.run(cmd)
+                    
             elif os.path.exists(self.source):
+                # If you have a given input file ...
                 print('Playing ' + self.source)
+                
+                # ... then play that one
                 if sys.platform=='win32':
                     winsound.PlaySound(str(self.source), winsound.SND_FILENAME)
+                elif sys.platform == 'darwin':
+                    cmd = ['afplay', str(self.source)]
+                    subprocess.run(cmd)
                 else:
                     pygame.init()
                     pygame.mixer.music.load(self.source)
@@ -353,6 +367,7 @@ class Sound:
                     # If you want to use FFMPEG instead, use the following commands:
                     #cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', self.source]
                     #subprocess.run(cmd)
+                    
         except SystemError:
             print('If you don''t have FFMPEG available, you can e.g. use installed audio-files. E.g.:')
             print('import subprocess')
