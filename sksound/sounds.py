@@ -68,7 +68,7 @@ sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 if sys.platform=='win32':
     import winsound
-elif sys.platform == 'linux2':
+elif sys.platform == 'linux':
     import pygame
     
 class NoFFMPEG_Error(Exception):
