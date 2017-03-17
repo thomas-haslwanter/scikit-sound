@@ -58,7 +58,7 @@ import appdirs
 import easygui
 
 # The following construct is required since I want to run the module as a script
-# inside the thLib-directory
+# inside the sksound-directory
 PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.realpath(os.path.dirname(__file__))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
@@ -204,7 +204,7 @@ class Sound:
 
     Examples
     --------
-    >>> from thLib.sounds import Sound
+    >>> from sksound.sounds import Sound
     >>> mySound1 = Sound()
     >>> mySound2 = Sound('test.wav')
     >>>
