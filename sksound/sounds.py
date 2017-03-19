@@ -30,13 +30,13 @@ Please install ffmpeg/ffplay in the following directory:
     - Mac:  	"/usr/local/bin/" (is already included in the default paths of the Mac terminal.)
     - Linux:	"/usr/bin/"
 
-Compatible with Python 2.x and 3.x
+Compatible with Python >=3.5
 
 '''
 
 '''
 Date:   March-2017
-Ver:    0.2
+Ver:    0.3
 Author: thomas haslwanter
 
 '''
@@ -58,7 +58,7 @@ import appdirs
 import easygui
 
 # The following construct is required since I want to run the module as a script
-# inside the thLib-directory
+# inside the sksound-directory
 PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.realpath(os.path.dirname(__file__))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
@@ -204,7 +204,7 @@ class Sound:
 
     Examples
     --------
-    >>> from thLib.sounds import Sound
+    >>> from sksound.sounds import Sound
     >>> mySound1 = Sound()
     >>> mySound2 = Sound('test.wav')
     >>>
@@ -314,8 +314,8 @@ class Sound:
 
         Notes
         -----
-        On "Windows" the module "winsound" is used; on other
-        platforms, the sound is played using "pygame".
+        On "Windows" the module "winsound" is used; on "Linux" I use
+        "pygame"; and on "OSX" the terminal command "afplay".
 
         Examples
         --------
