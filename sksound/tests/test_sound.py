@@ -33,6 +33,12 @@ class TestSequenceFunctions(unittest.TestCase):
                 inSound.play()
             except sounds.NoFFMPEG_Error:
                 pass
+            
+        # Also make sure that
+        # a) also another input gets read in correctly, and
+        # b) that floats are converted properly to integers
+        inSound.read_sound('float_sound.wav')
+        inSound.play()
         
     def test_sound_select(self):
         # Test with GUI

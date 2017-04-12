@@ -35,8 +35,8 @@ Compatible with Python >=3.5
 '''
 
 '''
-Date:   March-2017
-Ver:    0.3
+Date:   April-2017
+Ver:    0.4
 Author: thomas haslwanter
 
 '''
@@ -296,7 +296,17 @@ class Sound:
             self.source = outFile
 
         self.rate, self.data = read(inFile)
+        
+        # Set the filename
         self.source = inFile
+        
+        # Make sure that the data are in some integer format
+        # Otherwise, e.g. Windows has difficulty playing the sound
+        # Note that "self.source" is set to "None", in order to
+        # play the correct, converted file with "play"
+        if not np.issubdtype(self.data.dtype, np.integer):
+            self.generate_sound(self.data, self.rate)
+            
         self._setInfo()
         print('data read in!')
     
@@ -379,9 +389,9 @@ class Sound:
     def generate_sound(self, data, rate):
         ''' Set the properties of a Sound-object. '''
 
-        # If the data are in another format, e.g. "float", convert
+        # If the data are not in an integer format (if they are e.g. "float"), convert
         # them to integer and scale them to a reasonable amplitude
-        if not type(data[0]) == np.int16:
+        if not np.issubdtype(data.dtype, np.integer):
             defaultAmp = 2**13
             # Watch out with integer artefacts!
             data = np.int16(data * (defaultAmp / np.max(data)))
@@ -536,7 +546,7 @@ def main():
     inFile = 'a1.wav'
     
     fullFile = os.path.join(dataDir, inFile)
-    fullFile2 = os.path.join(dataDir, 'tiger.wav')
+    fullFile2 = os.path.join(dataDir, 'float_sound.wav')
     try:
         mySound = Sound(fullFile)
         mySound.play()
