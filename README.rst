@@ -13,8 +13,8 @@ Homepage
 http://work.thaslwanter.at/sksound/html/
 
 Author:  Thomas Haslwanter
-Date:    15-03-2017
-Ver:     0.1.5
+Date:    19-03-2017
+Ver:     0.1.6
 Licence: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
         Copyright (c) 2017, Thomas Haslwanter
         All rights reserved.

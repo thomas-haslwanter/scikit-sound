@@ -529,8 +529,8 @@ def main():
     #ffmpeg.set()
     
     ### Import a file, and play the sound
-    dataDir = r'/home/thomas/Coding/scikit-sound/sksound/tests'
-    inFile = 'YouAreNotIt.mp3'
+    dataDir = r'tests'
+    inFile = 'a1.wav'
     
     fullFile = os.path.join(dataDir, inFile)
     try:
@@ -540,18 +540,21 @@ def main():
     except NoFFMPEG_Error:
         pass
     
-    ## Test with self-generated data
-    rate = 22050
-    dt = 1./rate
-    t = np.arange(0,0.5,dt)
-    freq = 880
-    x = np.sin(2*np.pi*freq*t)
-    sounddata = np.int16(x*2**13)
+    fullFile2 = os.path.join(dataDir, 'tiger.wav')
+    mySound.read_sound(fullFile2)
+    mySound.play()
+    ### Test with self-generated data
+    #rate = 22050
+    #dt = 1./rate
+    #t = np.arange(0,0.5,dt)
+    #freq = 880
+    #x = np.sin(2*np.pi*freq*t)
+    #sounddata = np.int16(x*2**13)
     
-    inSound = Sound(inData=sounddata, inRate=rate)
-    inSound.summary()
-    inSound.play()
-    time.sleep(inSound.duration)
+    #inSound = Sound(inData=sounddata, inRate=rate)
+    #inSound.summary()
+    #inSound.play()
+    #time.sleep(inSound.duration)
     
     print('hi')
     
