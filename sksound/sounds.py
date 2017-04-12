@@ -268,8 +268,9 @@ class Sound:
 
         Examples
         --------
-        >>> mySound = Sound()
-        >>> mySound.read_sound('test.wav')
+        >>> mySound = Sound('test.wav')
+        >>> mySound.play()
+        >>> mySound.read_sound('test2.wav') # If you want to read in another(!) file
 
         '''
         
@@ -295,6 +296,7 @@ class Sound:
             self.source = outFile
 
         self.rate, self.data = read(inFile)
+        self.source = inFile
         self._setInfo()
         print('data read in!')
     
@@ -529,35 +531,38 @@ def main():
     #ffmpeg.set()
     
     ### Import a file, and play the sound
-    dataDir = r'tests'
+    #dataDir = r'/home/thomas/Coding/scikit-sound/sksound/tests'
+    dataDir = 'tests'
     inFile = 'a1.wav'
     
     fullFile = os.path.join(dataDir, inFile)
+    fullFile2 = os.path.join(dataDir, 'tiger.wav')
     try:
         mySound = Sound(fullFile)
+        mySound.play()
+        mySound.read_sound(fullFile2)
         mySound.play()
         time.sleep(mySound.duration)
     except NoFFMPEG_Error:
         pass
     
-    fullFile2 = os.path.join(dataDir, 'tiger.wav')
-    mySound.read_sound(fullFile2)
-    mySound.play()
-    ### Test with self-generated data
-    #rate = 22050
-    #dt = 1./rate
-    #t = np.arange(0,0.5,dt)
-    #freq = 880
-    #x = np.sin(2*np.pi*freq*t)
-    #sounddata = np.int16(x*2**13)
+    '''
+    ## Test with self-generated data
+    rate = 22050
+    dt = 1./rate
+    t = np.arange(0,0.5,dt)
+    freq = 880
+    x = np.sin(2*np.pi*freq*t)
+    sounddata = np.int16(x*2**13)
     
-    #inSound = Sound(inData=sounddata, inRate=rate)
-    #inSound.summary()
-    #inSound.play()
-    #time.sleep(inSound.duration)
+    inSound = Sound(inData=sounddata, inRate=rate)
+    inSound.summary()
+    inSound.play()
+    time.sleep(inSound.duration)
     
     print('hi')
     
+    '''
     ## Test if type conversion works
     #inSound2 = Sound(inData=x, inRate=rate)
     #inSound2.play()
