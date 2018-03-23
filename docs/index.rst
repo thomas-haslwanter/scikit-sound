@@ -3,8 +3,8 @@ scikit-sound - Documentation
 
 *scikit-sound* is a library for working with sound files.
 
-It is hosted under https://github.com/thomas-haslwanter/scikit-sound, and
-contains only one module: :py:mod:`sounds` . This module has two classes for working
+It is hosted under https://github.com/thomas-haslwanter/scikit-sound.
+The main module: :py:mod:`sounds` has two classes for working
 with sounds:
 
     - :py:class:`sounds.Sound` ... reading working with sounds.
@@ -29,6 +29,9 @@ config-information for Python:
 
     For more information, please check the help on the method *Sounds.sound()*
 
+In addition, the module :py:mod:`misc` provides GUI-utilities for dir- and
+file-selection etc.
+
 Installation
 ------------
 
@@ -52,7 +55,7 @@ the root directory of the package, and type
 
 Dependencies
 ^^^^^^^^^^^^
-numpy, scipy, easygui, appdirs, pygame
+numpy, scipy, appdirs, pygame
 
 Testing
 -------
@@ -70,6 +73,7 @@ Modules
    :maxdepth: 2
 
    sounds
+   misc
 
 
 Indices and tables
@@ -81,9 +85,9 @@ Indices and tables
 
 .. note::
     | *Author:*     Thomas Haslwanter
-    | *Version:*    0.1.8
-    | *Date:*       April 2017
+    | *Version:*    0.2.1
+    | *Date:*       March 2018
     | *email:*      thomas.haslwanter@fh-linz.at
-    | *Copyright (c):*      2017, Thomas Haslwanter. All rights reserved.
+    | *Copyright (c):*      2018, Thomas Haslwanter. All rights reserved.
     | *Licence:*    This work is licensed under the `BSD 2-Clause License <http://opensource.org/licenses/BSD-2-Clause>`_
 
