@@ -35,8 +35,7 @@ Compatible with Python >=3.5
 '''
 
 '''
-Date:   April-2017
-Ver:    0.4
+Date:   March-2018
 Author: thomas haslwanter
 
 '''
@@ -55,7 +54,7 @@ import json
 import time
 
 import appdirs
-import easygui
+import misc
 
 # The following construct is required since I want to run the module as a script
 # inside the sksound-directory
@@ -127,9 +126,11 @@ class FFMPEG_info:
         If FFMPEG is not installed, these are set to "None".
         """
         
-        ffmpeg_installed = easygui.ynbox(msg="Is FFMPEG installed?")
+        ffmpeg_installed = misc.askquestion(DialogTitle='FFMPEG Check',
+                                           Question='Is FFMPEG installed?')
+        
         if ffmpeg_installed:
-            ffmpeg_dir = easygui.diropenbox(msg='Please select the directory where FFMPEG (binary) is installed:')
+            ffmpeg_dir = misc.get_dir(DialogTitle='Please select the directory where FFMPEG (binary) is installed:')
             
             if sys.platform=='win32':
                 self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
@@ -427,8 +428,10 @@ class Sound:
         '''
 
         if full_out_file is None:
-            full_out_file = easygui.filesavebox(msg='Write sound to ....', default='*.wav', 
-                               filetypes=['*.wav'])
+            
+            (my_file, my_path) = misc.save_file(FilterSpec='*.wav', DialogTitle='Write sound to ...', 
+                          DefaultName='')
+            full_out_file = os.path.join(my_file, my_path)
             if full_out_file is None:
                 print('Output discarded.')
                 return 0
@@ -521,8 +524,12 @@ class Sound:
     def _selectInput(self):
         '''GUI for the selection of an in-file. '''
 
-        full_in_file = easygui.fileopenbox(msg='Select sound-input:', default='*.wav', 
-                                          filetypes=['*.wav', '*.mp3'])
+        (my_file, my_path) = misc.get_file(FilterSpec='*.wav', 
+                                    DialogTitle='Select sound-input:', 
+                                    DefaultName='')
+        full_in_file = os.path.join(my_path, my_file)
+        # filetypes=['*.wav', '*.mp3'])
+        
         if full_in_file is None:
             print('No file selected')
             return 0
@@ -540,7 +547,7 @@ def main():
     #ffmpeg = FFMPEG_info()
     #ffmpeg.set()
     
-    ### Import a file, and play the sound
+    # Import a file, and play the sound
     #dataDir = r'/home/thomas/Coding/scikit-sound/sksound/tests'
     dataDir = 'tests'
     inFile = 'a1.wav'
@@ -548,15 +555,16 @@ def main():
     fullFile = os.path.join(dataDir, inFile)
     fullFile2 = os.path.join(dataDir, 'float_sound.wav')
     try:
-        mySound = Sound(fullFile)
-        mySound.play()
-        mySound.read_sound(fullFile2)
-        mySound.play()
-        time.sleep(mySound.duration)
+        #mySound = Sound(fullFile)
+        #mySound.play()
+        #mySound.read_sound(fullFile2)
+        #mySound.play()
+        #time.sleep(mySound.duration)
+        mySound2 = Sound()
+        mySound2.play()
     except NoFFMPEG_Error:
         pass
     
-    '''
     ## Test with self-generated data
     rate = 22050
     dt = 1./rate
@@ -572,18 +580,17 @@ def main():
     
     print('hi')
     
-    '''
     ## Test if type conversion works
-    #inSound2 = Sound(inData=x, inRate=rate)
-    #inSound2.play()
+    inSound2 = Sound(inData=x, inRate=rate)
+    inSound2.play()
     
     # Test with GUI
-    #inSound = Sound()
-    #inSound.play()
-    #print(inSound.summary())
-    #out = inSound.get_info()
-    #print(out)
-    #inSound.write_wav()
+    inSound = Sound()
+    inSound.play()
+    print(inSound.summary())
+    out = inSound.get_info()
+    print(out)
+    inSound.write_wav()
     
 if __name__ == '__main__':
     main()

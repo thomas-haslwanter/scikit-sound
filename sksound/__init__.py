@@ -9,7 +9,7 @@ Homepage
 --------
 http://work.thaslwanter.at/sksound/html/
 
-Copyright (c) 2017 Thomas Haslwanter <thomas.haslwanter@fh-linz.at>
+Copyright (c) 2018 Thomas Haslwanter <thomas.haslwanter@fh-linz.at>
 
 '''
 
@@ -17,7 +17,7 @@ import importlib
 
 __author__ = "Thomas Haslwanter <thomas.haslwanter@fh-linz.at"
 __license__ = "BSD 2-Clause License"
-__version__ = "0.1.8"
+__version__ = "0.1.9"
 
 __all__ = ['sounds']
 

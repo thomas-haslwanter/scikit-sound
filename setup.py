@@ -5,7 +5,7 @@ import sys
 if sys.platform == 'linux':
     setup(
         name='scikit-sound',
-        version="0.1.8",
+        version="0.1.9",
         packages=find_packages(),
     
         include_package_data=True,
@@ -13,7 +13,7 @@ if sys.platform == 'linux':
     
         # Project uses reStructuredText, so ensure that the docutils get
         # installed or upgraded on the target machine
-        install_requires=['docutils>=0.3', 'easygui', 'appdirs', 'pygame'],
+        install_requires=['docutils>=0.3', 'appdirs', 'pygame'],
     
         # metadata for upload to PyPI
         author       = "Thomas Haslwanter",
@@ -37,7 +37,7 @@ if sys.platform == 'linux':
 else:
     setup(
         name='scikit-sound',
-        version="0.1.8",
+        version="0.1.9",
         packages=find_packages(),
     
         include_package_data=True,
@@ -45,7 +45,7 @@ else:
     
         # Project uses reStructuredText, so ensure that the docutils get
         # installed or upgraded on the target machine
-        install_requires=['docutils>=0.3', 'easygui', 'appdirs'],
+        install_requires=['docutils>=0.3', 'appdirs'],
     
         # metadata for upload to PyPI
         author       = "Thomas Haslwanter",
