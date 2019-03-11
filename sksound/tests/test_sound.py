@@ -1,9 +1,10 @@
 import sys
 import os
 myPath = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, myPath + '/../')
+sys.path.insert(0, os.path.join(myPath, '..', '..'))
+# sys.path.insert(0, myPath + '/../')
 
-import sounds 
+from sksound import sounds 
 import unittest
 import numpy as np
 

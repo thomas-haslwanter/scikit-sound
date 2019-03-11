@@ -81,9 +81,9 @@ Indices and tables
 
 .. note::
     | *Author:*     Thomas Haslwanter
-    | *Version:*    0.1.8
-    | *Date:*       April 2017
+    | *Version:*    0.2.2
+    | *Date:*       March 2019
     | *email:*      thomas.haslwanter@fh-linz.at
-    | *Copyright (c):*      2017, Thomas Haslwanter. All rights reserved.
+    | *Copyright (c):*      2019, Thomas Haslwanter. All rights reserved.
     | *Licence:*    This work is licensed under the `BSD 2-Clause License <http://opensource.org/licenses/BSD-2-Clause>`_
 

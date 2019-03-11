@@ -7,4 +7,6 @@ v0.1.5, 15-Mar-2017 -- OSX fix
 v0.1.6, 19-Mar-2017 -- update documentation
 v0.1.7, 12-Apr-2017 -- fix bug when reading in a second file
 v0.1.8, 12-Apr-2017 -- convert float input files to integer
+v0.2.0, 23-Mar-2018 -- Eliminate the dependency on easygui
+v0.2.2, 11-Mar-2019 -- Update the documentation
 

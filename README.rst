@@ -13,10 +13,10 @@ Homepage
 http://work.thaslwanter.at/sksound/html/
 
 Author:  Thomas Haslwanter
-Date:    12-04-2017
-Ver:     0.1.8
+Date:    11-03-2019
+Ver:     0.2.2
 Licence: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
-        Copyright (c) 2017, Thomas Haslwanter
+        Copyright (c) 2019, Thomas Haslwanter
         All rights reserved.
 
 Installation

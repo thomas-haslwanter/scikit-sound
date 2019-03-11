@@ -1,4 +1,4 @@
-'''
+"""
 Python module to read, play, and write sound data.
 For flexibility, FFMPEG is used for non-WAV files.
 
@@ -6,10 +6,10 @@ If you re-set the location of FFMPEG, please run the following code:
 
 >>> ffmpeg = FFMPEG_info()
 >>> ffmpeg.set()
-    
+
 You can obtain it for free from
     http://ffmpeg.org
-    
+
 Mac users using Anaconda should follow the instructions on
 
         https://anaconda.org/soft-matter/ffmpeg
@@ -20,10 +20,10 @@ Mac users using Anaconda should follow the instructions on
 
     seemed to work. Binaries are also available from
 
-        - http://www.evermeet.cx/ffmpeg/ffmpeg-3.2.4.7z
-        - http://www.evermeet.cx/ffplay/ffplay-3.2.4.7z
+        - http://www.evermeet.cx/ffmpeg/ffmpeg-4.1.1.7z
+        - http://www.evermeet.cx/ffplay/ffplay-4.1.1.7z
 
-Note that FFMPEG must be installed externally!
+Note that FFMPEG must be installed externally, not as a Python package!!
 Please install ffmpeg/ffplay in the following directory:
 
     - Windows:  "C:\\\\Program Files\\\\ffmpeg\\\\bin\\\\"
@@ -32,10 +32,10 @@ Please install ffmpeg/ffplay in the following directory:
 
 Compatible with Python >=3.5
 
-'''
+"""
 
 '''
-Date:   March-2018
+Date:   March-2019
 Author: thomas haslwanter
 
 '''
@@ -54,13 +54,14 @@ import json
 import time
 
 import appdirs
-import misc
 
 # The following construct is required since I want to run the module as a script
 # inside the sksound-directory
 PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.realpath(os.path.dirname(__file__))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+
+from sksound import misc
 
 # On Win playing sound works automatically
 # For the other packages you need the module "pygame"
@@ -69,25 +70,28 @@ if sys.platform=='win32':
     import winsound
 elif sys.platform == 'linux':
     import pygame
-    
+
+
 class NoFFMPEG_Error(Exception):
-    pass    
-    
+    pass
+
+
 class FFMPEG_info:
-    '''
+    """
+
     Class for storing the config-info for FFMPEG.
-    
+
     If first checks if FFMPEG is installed. FFMPEG is necessary to
     read MP3-files etc. Once checked, the corresponding information
     is saved in "ffmpeg.json", under "/FFMPEG_info/sksound/":
-    
+
     FFMPEG_info properties:
         - config_file : JSON-file, with the config-information
         - ffmpeg : Commandline location of the command "ffmpeg"
         - ffplay : Commandline location of the command "ffplay"
-    
-    
-    '''
+
+
+    """
 
     def __init__(self):
         """Set the name of the config-file, and the properties
@@ -164,8 +168,10 @@ class FFMPEG_info:
         
         return
     
+    
 class Sound:
-    '''
+    """
+
     Class for working with sound in Python.
     
     A Sound object can be initialized
@@ -203,6 +209,14 @@ class Sound:
         - duration
         - bitsPerSample
 
+    SoundMethods:
+        - generate_sound
+        - get_info
+        - play
+        - read_sound
+        - summary
+        - write_wav
+        
     Examples
     --------
     >>> from sksound.sounds import Sound
@@ -218,11 +232,10 @@ class Sound:
     >>> sounddata = np.int16(x*amp)
     >>> mySound3 = Sound(inData=sounddata, inRate=rate)
 
-    '''
-    
+    """
 
     def __init__(self, inFile = None, inData = None, inRate = None):
-        '''Initialize a Sound object '''
+        """ Initialize a Sound object """
         
         # Information about FFMPEG
         self.info = FFMPEG_info()
@@ -246,9 +259,9 @@ class Sound:
                 self.source = inFile
                 self.read_sound(self.source)
         
-
     def read_sound(self, inFile):
-        '''
+        """
+
         Read data from a sound-file.
 
         Parameters
@@ -273,8 +286,8 @@ class Sound:
         >>> mySound.play()
         >>> mySound.read_sound('test2.wav') # If you want to read in another(!) file
 
-        '''
-        
+        """
+
         # Python can natively only read "wav" files. To be flexible, use "ffmpeg" for conversion for other formats
         if not os.path.exists(inFile):
             print('{0} does not exist!'.format(inFile))
@@ -310,33 +323,33 @@ class Sound:
             
         self._setInfo()
         print('data read in!')
-    
+
 
     def play(self):
-        '''
-        Play the stored sound
+        """
+       Play the stored sound
 
-        Parameters
-        ----------
-        None : 
+       Parameters
+       ----------
+       None :
 
-        Returns
-        -------
-        None :
-            
+       Returns
+       -------
+       None :
 
-        Notes
-        -----
-        On "Windows" the module "winsound" is used; on "Linux" I use
-        "pygame"; and on "OSX" the terminal command "afplay".
 
-        Examples
-        --------
-        >>> mySound = Sound()
-        >>> mySound.read_sound('test.wav')
-        >>> mySound.play()
+       Notes
+       -----
+       On "Windows" the module "winsound" is used; on "Linux" I use
+       "pygame"; and on "OSX" the terminal command "afplay".
 
-        '''
+       Examples
+       --------
+       >>> mySound = Sound()
+       >>> mySound.read_sound('test.wav')
+       >>> mySound.play()
+
+        """
 
         try:
             if self.source is None:
@@ -366,7 +379,7 @@ class Sound:
                 print('Playing ' + self.source)
                 
                 # ... then play that one
-                if sys.platform=='win32':
+                if sys.platform == 'win32':
                     winsound.PlaySound(str(self.source), winsound.SND_FILENAME)
                 elif sys.platform == 'darwin':
                     cmd = ['afplay', str(self.source)]
@@ -385,10 +398,10 @@ class Sound:
             print('If you don''t have FFMPEG available, you can e.g. use installed audio-files. E.g.:')
             print('import subprocess')
             print('subprocess.run([r"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", r"C:\Music\14_Streets_of_Philadelphia.mp3"])')
-            
 
+            
     def generate_sound(self, data, rate):
-        ''' Set the properties of a Sound-object. '''
+        """ Set the properties of a Sound-object. """
 
         # If the data are not in an integer format (if they are e.g. "float"), convert
         # them to integer and scale them to a reasonable amplitude
@@ -402,9 +415,9 @@ class Sound:
         self.source = None
         self._setInfo()
 
+    def write_wav(self, full_out_file = None):
+        """
 
-    def write_wav(self, full_out_file = None):            
-        '''
         Write sound data to a WAV-file.
 
         Parameters
@@ -425,7 +438,7 @@ class Sound:
         >>> mySound.read_sound('test.wav')
         >>> mySound.write_wav()
 
-        '''
+        """
 
         if full_out_file is None:
             
@@ -445,7 +458,7 @@ class Sound:
             return full_out_file
     
     def get_info(self):
-        '''
+        """
         Return information about the sound.
 
         Parameters
@@ -468,8 +481,8 @@ class Sound:
         >>> info = mySound.get_info()
         >>> (source, rate, numChannels, totalSamples, duration, bitsPerSample) = mySound.info()
 
-        '''
-        
+        """
+
         return (self.source,
                 self.rate,
                 self.numChannels,
@@ -478,7 +491,7 @@ class Sound:
                 self.dataType)
 
     def summary(self):
-        '''
+        """
         Display information about the sound.
 
         Parameters
@@ -495,8 +508,8 @@ class Sound:
         >>> mySound.read_sound('test.wav')
         >>> mySound.summary()
 
-        '''
-        
+        """
+
         import yaml
         
         (source, rate, numChannels, totalSamples, duration, dataType) = self.get_info()
@@ -509,8 +522,8 @@ class Sound:
         print(yaml.dump(info, default_flow_style=False))
         
     def _setInfo(self):
-        '''Set the information properties of that sound'''
-            
+        """ Set the information properties of that sound """
+
         if len(self.data.shape)==1:
             self.numChannels = 1
             self.totalSamples = len(self.data)
@@ -522,7 +535,7 @@ class Sound:
         self.dataType = str(self.data.dtype)
         
     def _selectInput(self):
-        '''GUI for the selection of an in-file. '''
+        """ GUI for the selection of an in-file. """
 
         (my_file, my_path) = misc.get_file(FilterSpec='*.wav', 
                                     DialogTitle='Select sound-input:', 
@@ -538,60 +551,58 @@ class Sound:
             return full_in_file
 
 def main():
-    ''' Main function, to test the module '''
+    """ Main function, to test the module """
+
     import os
     import numpy as np
-    import matplotlib.pyplot as plt
-    
+
     # Re-set FFMPEG
-    #ffmpeg = FFMPEG_info()
-    #ffmpeg.set()
-    
+    # ffmpeg = FFMPEG_info()
+    # ffmpeg.set()
+
     # Import a file, and play the sound
-    #dataDir = r'/home/thomas/Coding/scikit-sound/sksound/tests'
-    dataDir = 'tests'
-    inFile = 'a1.wav'
-    
-    fullFile = os.path.join(dataDir, inFile)
-    fullFile2 = os.path.join(dataDir, 'float_sound.wav')
+    # data_dir = r'/home/thomas/Coding/scikit-sound/sksound/tests'
+    data_dir = 'tests'
+    in_file = 'a1.wav'
+
+    full_file = os.path.join(data_dir, in_file)
     try:
-        #mySound = Sound(fullFile)
-        #mySound.play()
-        #mySound.read_sound(fullFile2)
-        #mySound.play()
-        #time.sleep(mySound.duration)
+        # mySound = Sound(full_file)
+        # mySound.play()
+        # time.sleep(mySound.duration)
         mySound2 = Sound()
         mySound2.play()
     except NoFFMPEG_Error:
         pass
-    
-    ## Test with self-generated data
+
+    # Test with self-generated data
     rate = 22050
     dt = 1./rate
     t = np.arange(0,0.5,dt)
     freq = 880
     x = np.sin(2*np.pi*freq*t)
     sounddata = np.int16(x*2**13)
-    
-    inSound = Sound(inData=sounddata, inRate=rate)
-    inSound.summary()
-    inSound.play()
-    time.sleep(inSound.duration)
-    
+
+    in_sound = Sound(inData=sounddata, inRate=rate)
+    in_sound.summary()
+    in_sound.play()
+    time.sleep(in_sound.duration)
+
     print('hi')
-    
-    ## Test if type conversion works
-    inSound2 = Sound(inData=x, inRate=rate)
-    inSound2.play()
-    
+
+    # Test if type conversion works
+    in_sound2 = Sound(inData=x, inRate=rate)
+    in_sound2.play()
+
     # Test with GUI
-    inSound = Sound()
-    inSound.play()
-    print(inSound.summary())
-    out = inSound.get_info()
+    in_sound = Sound()
+    in_sound.play()
+    print(in_sound.summary())
+    out = in_sound.get_info()
     print(out)
-    inSound.write_wav()
-    
+    in_sound.write_wav()
+
+
 if __name__ == '__main__':
     main()
-    
+
