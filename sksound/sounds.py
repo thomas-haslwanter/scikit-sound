@@ -45,8 +45,7 @@ Author: thomas haslwanter
 # You can obtain it for free from http://ffmpeg.org
 
 import numpy as np
-import os
-import sys
+
 from scipy.io.wavfile import read, write
 import tempfile
 import subprocess
@@ -57,9 +56,13 @@ import appdirs
 
 # The following construct is required since I want to run the module as a script
 # inside the sksound-directory
-PACKAGE_PARENT = '..'
-SCRIPT_DIR = os.path.realpath(os.path.dirname(__file__))
-sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
+import os
+import sys
+file_dir = os.path.dirname(__file__)
+if file_dir not in sys.path:
+    sys.path.insert(0, file_dir)
+    
+import misc
 
 from sksound import misc
 
