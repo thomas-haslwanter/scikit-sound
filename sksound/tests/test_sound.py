@@ -6,6 +6,7 @@ sys.path.insert(0, os.path.join(myPath, '..', '..'))
 from sksound import sounds 
 import unittest
 import numpy as np
+from pathlib import Path
 
 class TestSequenceFunctions(unittest.TestCase):
     
@@ -62,7 +63,9 @@ class TestSequenceFunctions(unittest.TestCase):
         inSound = sounds.Sound(inData=sounddata, inRate=rate)
         
         # Write sound-data
-        inSound.write_wav()
+        out_file = inSound.write_wav()
+        new_file = Path(out_file)
+        assert new_file.stat().st_size > 0
         
 if __name__ == '__main__':
     unittest.main()

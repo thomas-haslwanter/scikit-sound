@@ -445,20 +445,20 @@ class Sound:
 
         if full_out_file is None:
             
-            (my_file, my_path) = misc.save_file(FilterSpec='*.wav', DialogTitle='Write sound to ...', 
+            (out_file, out_dir) = misc.save_file(FilterSpec='*.wav', DialogTitle='Write sound to ...', 
                           DefaultName='')
-            full_out_file = os.path.join(my_file, my_path)
+            full_out_file = os.path.join(out_dir, out_file)
             if full_out_file is None:
                 print('Output discarded.')
                 return 0
         else:
-            (outFile , outDir) = os.path.split(full_out_file)
+            (out_file , out_dir) = os.path.split(full_out_file)
 
-            write(str(full_out_file), int(self.rate), self.data)
-            print('Sounddata written to ' + outFile + ', with a sample rate of ' + str(self.rate))
-            print('OutDir: ' + outDir)
-
-            return full_out_file
+        write(str(full_out_file), int(self.rate), self.data)
+        print('Sounddata written to ' + out_file + ', with a sample rate of ' + str(self.rate))
+        print('OutDir: ' + out_dir)
+        
+        return full_out_file
     
     def get_info(self):
         """

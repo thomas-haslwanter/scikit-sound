@@ -7,7 +7,7 @@ It is hosted under https://github.com/thomas-haslwanter/scikit-sound, and
 contains only one module: :py:mod:`sounds` . This module has two classes for working
 with sounds:
 
-    - :py:class:`sounds.Sound` ... reading working with sounds.
+    - :py:class:`sounds.Sound` ... reading in, and working with sounds.
     - :py:class:`sounds.FFMPEG_info` ... handling the FFMPEG installation required for working with MP3-files etc.
 
 The class *Sounds* lets you
