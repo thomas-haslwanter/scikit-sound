@@ -17,7 +17,7 @@ import importlib
 
 __author__ = "Thomas Haslwanter <thomas.haslwanter@fh-linz.at"
 __license__ = "BSD 2-Clause License"
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 __all__ = ['misc', 'sounds']
 
