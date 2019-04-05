@@ -39,3 +39,13 @@ Sound Processing Utilities
     * read_sound
     * summary
     * write_wav
+
+Misc Other Utilities
+====================
+
+- misc ... GUI routines for standard file- and directory-handling
+   * askquestion
+   * get_dir
+   * get_file
+   * progressbar
+   * save_file

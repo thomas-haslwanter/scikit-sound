@@ -70,6 +70,7 @@ Modules
    :maxdepth: 2
 
    sounds
+   misc
 
 
 Indices and tables
