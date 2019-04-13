@@ -1,0 +1,69 @@
+Metadata-Version: 1.1
+Name: scikit-sound
+Version: 0.2.4
+Summary: Python utilites for working with sound signals
+Home-page: http://work.thaslwanter.at/sksound/html
+Author: Thomas Haslwanter
+Author-email: thomas.haslwanter@fh-linz.at
+License: http://opensource.org/licenses/BSD-2-Clause
+Download-URL: https://github.com/thomas-haslwanter/scikit-sound
+Description: ============
+        scikit-sound
+        ============
+        
+        *scikit-sound* contains functions for working with sound 
+        
+        Dependencies
+        ------------
+        numpy, scipy
+        
+        Homepage
+        --------
+        http://work.thaslwanter.at/sksound/html/
+        
+        Author:  Thomas Haslwanter
+        Date:    13-04-2019
+        Ver:     0.2.5
+        Licence: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
+                Copyright (c) 2019, Thomas Haslwanter
+                All rights reserved.
+        
+        Installation
+        ------------
+        You can install scikit-sound with
+        
+            pip install scikit-sound
+        
+        and upgrade to a new version with
+        
+            pip install scikit-sound -U
+        
+        Sound Processing Utilities
+        ==========================
+        
+        - sounds.Sound ... class, with methods
+            * generate_sound
+            * get_info
+            * play
+            * read_sound
+            * summary
+            * write_wav
+        
+        Misc Other Utilities
+        ====================
+        
+        - misc ... GUI routines for standard file- and directory-handling
+           * askquestion
+           * get_dir
+           * get_file
+           * progressbar
+           * save_file
+        
+Keywords: sound auditory signals
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Topic :: Scientific/Engineering

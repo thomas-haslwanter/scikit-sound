@@ -85,7 +85,7 @@ Indices and tables
 
 .. note::
     | *Author:*     Thomas Haslwanter
-    | *Version:*    0.2.4
+    | *Version:*    0.2.5
     | *Date:*       April 2019
     | *email:*      thomas.haslwanter@fh-linz.at
     | *Copyright (c):*      2019, Thomas Haslwanter. All rights reserved.

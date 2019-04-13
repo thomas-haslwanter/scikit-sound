@@ -1,0 +1,488 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sound Processing Utilities &#8212; scikit-sound 0.2.3 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <link rel="shortcut icon" href="_static/sksound.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="misc" href="misc.html" />
+    <link rel="prev" title="scikit-sound - Documentation" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="misc.html" title="misc"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="scikit-sound - Documentation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sound-processing-utilities">
+<span id="sound-label"></span><h1>Sound Processing Utilities<a class="headerlink" href="#sound-processing-utilities" title="Permalink to this headline">¶</a></h1>
+<p>This module contains two classes:</p>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sounds.Sound" title="sounds.Sound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound</span></code></a>([inFile,&nbsp;inData,&nbsp;inRate])</td>
+<td>Class for working with sound in Python.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sounds.FFMPEG_info" title="sounds.FFMPEG_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.FFMPEG_info</span></code></a>()</td>
+<td>Class for storing the config-info for FFMPEG.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="methods-sound">
+<h3>Methods Sound<a class="headerlink" href="#methods-sound" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sounds.Sound.generate_sound" title="sounds.Sound.generate_sound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.generate_sound</span></code></a>(data,&nbsp;rate)</td>
+<td>Set the properties of a Sound-object.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sounds.Sound.get_info" title="sounds.Sound.get_info"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.get_info</span></code></a>()</td>
+<td>Return information about the sound.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sounds.Sound.play" title="sounds.Sound.play"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.play</span></code></a>()</td>
+<td>Play the stored sound</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sounds.Sound.read_sound" title="sounds.Sound.read_sound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.read_sound</span></code></a>(inFile)</td>
+<td>Read data from a sound-file.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#sounds.Sound.summary" title="sounds.Sound.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.summary</span></code></a>()</td>
+<td>Display information about the sound.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#sounds.Sound.write_wav" title="sounds.Sound.write_wav"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.write_wav</span></code></a>([full_out_file])</td>
+<td>Write sound data to a WAV-file.</td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="methods-ffmpeg-info">
+<h3>Methods FFMPEG_info<a class="headerlink" href="#methods-ffmpeg-info" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#sounds.FFMPEG_info.set" title="sounds.FFMPEG_info.set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.FFMPEG_info.set</span></code></a>()</td>
+<td>Set the config-filename, and write the FFMPEG_info properties “ffmpeg” and “ffplay” to that config-file.</td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+<div class="section" id="module-sounds">
+<span id="details"></span><h2>Details<a class="headerlink" href="#module-sounds" title="Permalink to this headline">¶</a></h2>
+<p>Python module to read, play, and write sound data.
+For flexibility, FFMPEG is used for non-WAV files.</p>
+<p>If you re-set the location of FFMPEG, please run the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFMPEG_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ffmpeg</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>You can obtain it for free from</dt>
+<dd><a class="reference external" href="http://ffmpeg.org">http://ffmpeg.org</a></dd>
+</dl>
+<p>Mac users using Anaconda should follow the instructions on</p>
+<blockquote>
+<div><blockquote>
+<div><a class="reference external" href="https://anaconda.org/soft-matter/ffmpeg">https://anaconda.org/soft-matter/ffmpeg</a></div></blockquote>
+<p>Otherwise, the tips under</p>
+<blockquote>
+<div><a class="reference external" href="https://github.com/fluent-ffmpeg/node-fluent-ffmpeg/wiki/Installing-ffmpeg-on-Mac-OS-X">https://github.com/fluent-ffmpeg/node-fluent-ffmpeg/wiki/Installing-ffmpeg-on-Mac-OS-X</a></div></blockquote>
+<p>seemed to work. Binaries are also available from</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.evermeet.cx/ffmpeg/ffmpeg-4.1.1.7z">http://www.evermeet.cx/ffmpeg/ffmpeg-4.1.1.7z</a></li>
+<li><a class="reference external" href="http://www.evermeet.cx/ffplay/ffplay-4.1.1.7z">http://www.evermeet.cx/ffplay/ffplay-4.1.1.7z</a></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>Note that FFMPEG must be installed externally, not as a Python package!!
+Please install ffmpeg/ffplay in the following directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Windows:  “C:\Program Files\ffmpeg\bin&quot;</li>
+<li>Mac:      “/usr/local/bin/” (is already included in the default paths of the Mac terminal.)</li>
+<li>Linux:    “/usr/bin/”</li>
+</ul>
+</div></blockquote>
+<p>Compatible with Python &gt;=3.5</p>
+<dl class="class">
+<dt id="sounds.FFMPEG_info">
+<em class="property">class </em><code class="descclassname">sounds.</code><code class="descname">FFMPEG_info</code><a class="reference internal" href="_modules/sounds.html#FFMPEG_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.FFMPEG_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for storing the config-info for FFMPEG.</p>
+<p>If first checks if FFMPEG is installed. FFMPEG is necessary to
+read MP3-files etc. Once checked, the corresponding information
+is saved in “ffmpeg.json”, under “/FFMPEG_info/sksound/”:</p>
+<dl class="docutils">
+<dt>FFMPEG_info properties:</dt>
+<dd><ul class="first last simple">
+<li>config_file : JSON-file, with the config-information</li>
+<li>ffmpeg : Commandline location of the command “ffmpeg”</li>
+<li>ffplay : Commandline location of the command “ffplay”</li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="sounds.FFMPEG_info.set">
+<code class="descname">set</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#FFMPEG_info.set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.FFMPEG_info.set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the config-filename, and write the FFMPEG_info
+properties “ffmpeg” and “ffplay” to that config-file.</p>
+<p>If FFMPEG is not installed, these are set to “None”.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="sounds.NoFFMPEG_Error">
+<em class="property">exception </em><code class="descclassname">sounds.</code><code class="descname">NoFFMPEG_Error</code><a class="reference internal" href="_modules/sounds.html#NoFFMPEG_Error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.NoFFMPEG_Error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
+<dt id="sounds.Sound">
+<em class="property">class </em><code class="descclassname">sounds.</code><code class="descname">Sound</code><span class="sig-paren">(</span><em>inFile=None</em>, <em>inData=None</em>, <em>inRate=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for working with sound in Python.</p>
+<dl class="docutils">
+<dt>A Sound object can be initialized</dt>
+<dd><ul class="first last simple">
+<li>by giving a filename</li>
+<li>by providing “int16” data and a rate</li>
+<li>without giving any parameter; in that case the user is prompted
+to select an infile</li>
+</ul>
+</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inFile</strong> (<em>string</em>) – path- and file-name of infile, if you get the sound from a file.</li>
+<li><strong>inData</strong> (<em>array</em>) – manually generated sound data; requires “inRate” to be set, too.</li>
+<li><strong>inRate</strong> (<em>integer</em>) – sample rate; required if “inData” are entered.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">No return value. Initializes the Sound-properties.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>For non WAV-files, the file is first converted to WAV using
+FFMPEG, and then read in. A warning is generated, to avoid
+unintentional deletion of existing WAV-files.</p>
+<dl class="docutils">
+<dt>SoundProperties:</dt>
+<dd><ul class="first last simple">
+<li>source</li>
+<li>data</li>
+<li>rate</li>
+<li>numChannels</li>
+<li>totalSamples</li>
+<li>duration</li>
+<li>bitsPerSample</li>
+</ul>
+</dd>
+<dt>SoundMethods:</dt>
+<dd><ul class="first last simple">
+<li>generate_sound</li>
+<li>get_info</li>
+<li>play</li>
+<li>read_sound</li>
+<li>summary</li>
+<li>write_wav</li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sksound.sounds</span> <span class="k">import</span> <span class="n">Sound</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound1</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound2</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">(</span><span class="s1">&#39;test.wav&#39;</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rate</span> <span class="o">=</span> <span class="mi">22050</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dt</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">rate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">freq</span> <span class="o">=</span> <span class="mi">440</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="n">dt</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">freq</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amp</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sounddata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">amp</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound3</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">(</span><span class="n">inData</span><span class="o">=</span><span class="n">sounddata</span><span class="p">,</span> <span class="n">inRate</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="sounds.Sound.generate_sound">
+<code class="descname">generate_sound</code><span class="sig-paren">(</span><em>data</em>, <em>rate</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.generate_sound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound.generate_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the properties of a Sound-object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sounds.Sound.get_info">
+<code class="descname">get_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.get_info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound.get_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return information about the sound.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>None</strong> – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li><strong>source</strong> (<em>name of inFile</em>)</li>
+<li><strong>rate</strong> (<em>sampleRate</em>)</li>
+<li><strong>numChannels</strong> (<em>number of channels</em>)</li>
+<li><strong>totalSamples</strong> (<em>number of total samples</em>)</li>
+<li><strong>duration</strong> (<em>duration [sec]</em>)</li>
+<li><strong>bitsPerSample</strong> (<em>bits per sample</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="s1">&#39;test.wav&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="n">mySound</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">numChannels</span><span class="p">,</span> <span class="n">totalSamples</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">bitsPerSample</span><span class="p">)</span> <span class="o">=</span> <span class="n">mySound</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sounds.Sound.play">
+<code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound.play" title="Permalink to this definition">¶</a></dt>
+<dd><p>Play the stored sound</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>None</strong> – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>On “Windows” the module “winsound” is used; on “Linux” I use
+“pygame”; and on “OSX” the terminal command “afplay”.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="s1">&#39;test.wav&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sounds.Sound.read_sound">
+<code class="descname">read_sound</code><span class="sig-paren">(</span><em>inFile</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.read_sound"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound.read_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data from a sound-file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inFile</strong> (<em>string</em>) – path- and file-name of infile</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">No return value. Sets the property “data” of the object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li>For non WAV-files, the file is first converted to WAV using
+FFMPEG, and then read in.</li>
+<li>If FFMPEG is not installed, non-WAV files produce a “sounds.NoFFMPEG_Error”</li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">(</span><span class="s1">&#39;test.wav&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="s1">&#39;test2.wav&#39;</span><span class="p">)</span> <span class="c1"># If you want to read in another(!) file</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sounds.Sound.summary">
+<code class="descname">summary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.summary"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound.summary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display information about the sound.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>None</strong> – </td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="s1">&#39;test.wav&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sounds.Sound.write_wav">
+<code class="descname">write_wav</code><span class="sig-paren">(</span><em>full_out_file=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.write_wav"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.Sound.write_wav" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write sound data to a WAV-file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fullOutFile</strong> (<em>string</em>) – Path- and file-name of the outfile. If none is given,
+the user is asked interactively to choose a folder/name
+for the outfile.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="s1">&#39;test.wav&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mySound</span><span class="o">.</span><span class="n">write_wav</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="sounds.main">
+<code class="descclassname">sounds.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#main"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sounds.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function, to test the module</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/sksound.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sound Processing Utilities</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#methods-sound">Methods Sound</a></li>
+<li><a class="reference internal" href="#methods-ffmpeg-info">Methods FFMPEG_info</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-sounds">Details</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">scikit-sound - Documentation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="misc.html"
+                        title="next chapter">misc</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sounds.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="misc.html" title="misc"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="scikit-sound - Documentation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.3 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, thomas haslwanter.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>
