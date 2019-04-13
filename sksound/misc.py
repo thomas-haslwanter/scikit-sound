@@ -90,6 +90,7 @@ def get_file(FilterSpec='*', DialogTitle='Select File: ', DefaultName=''):
     
     root = tkinter.Tk()
     root.withdraw()
+    root.attributes("-topmost", True)
     fullInFile = tkf.askopenfilename(initialfile=DefaultName,
             title=DialogTitle, filetypes=[('all files','*'), ('Select',
                 FilterSpec)])
@@ -135,6 +136,7 @@ def save_file(FilterSpec='*',DialogTitle='Save File: ', DefaultName=''):
     
     root = tkinter.Tk()
     root.withdraw()
+    root.attributes("-topmost", True)
     outFile = tkf.asksaveasfile(mode='w', title=DialogTitle, initialfile=DefaultName, filetypes=[('Save as', FilterSpec)])
     
     # Close the Tk-window manager again
@@ -175,6 +177,7 @@ def get_dir(DialogTitle='Select Directory', DefaultName='.'):
     
     root = tkinter.Tk()
     root.withdraw()
+    root.attributes("-topmost", True)
     fullDir = tkf.askdirectory(initialdir=DefaultName, title=DialogTitle)
     
     # Close the Tk-window manager again

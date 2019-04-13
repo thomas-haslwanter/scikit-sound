@@ -47,6 +47,12 @@ class TestSequenceFunctions(unittest.TestCase):
         inSound.play()
         print('hi')
         
+        # Test with file
+        in_file = 'tiger.wav'
+        inSound = sounds.Sound(in_file)
+        inSound.play()
+        print('hi')
+        
         # Info about sound, and its display
         (source, rate, numChannels, totalSamples, duration, bitsPerSample) = inSound.get_info()
         inSound.summary()
