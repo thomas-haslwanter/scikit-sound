@@ -225,11 +225,12 @@ def askquestion (DialogTitle='Interactive Selection', Question='Are we done yet?
 
 if __name__ == "__main__":   
     # Test functions
+    
+    '''
     result = askquestion(DialogTitle='Interactive choice', 
                         Question='Are we done yet?')
     print('You have selected {0}'.format(result))
     
-    '''
     
     import time
     for ii in progressbar(range(50), 'Computing ', 25):

@@ -543,13 +543,11 @@ class Sound:
         (my_file, my_path) = misc.get_file(FilterSpec='*.wav', 
                                     DialogTitle='Select sound-input:', 
                                     DefaultName='')
-        full_in_file = os.path.join(my_path, my_file)
-        # filetypes=['*.wav', '*.mp3'])
-        
-        if full_in_file is None:
+        if my_path == 0:
             print('No file selected')
             return 0
         else:
+            full_in_file = os.path.join(my_path, my_file)
             print('Selection: ' + full_in_file)
             return full_in_file
 
@@ -607,5 +605,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    my_sound = Sound()
+    #main()
 
