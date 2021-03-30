@@ -1,19 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>misc &#8212; scikit-sound 0.2.3 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>misc &#8212; scikit-sound 0.2.6 documentation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="_static/sksound.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -32,7 +31,8 @@
         <li class="right" >
           <a href="sounds.html" title="Sound Processing Utilities"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">misc</a></li> 
       </ul>
     </div>  
 
@@ -48,11 +48,11 @@ applications</p>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="#misc.askquestion" title="misc.askquestion"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.askquestion()</span></code></a> … GUI-dialog for y/n selection</li>
-<li><a class="reference internal" href="#misc.get_file" title="misc.get_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.get_file()</span></code></a> … GUI-dialog for file-selection</li>
-<li><a class="reference internal" href="#misc.get_dir" title="misc.get_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.get_dir()</span></code></a> … GUI-dialog for directory-selection</li>
-<li><a class="reference internal" href="#misc.progressbar" title="misc.progressbar"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.progressbar()</span></code></a> … console-based progressbar, to indicate the level of completeness</li>
-<li><a class="reference internal" href="#misc.save_file" title="misc.save_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.save_file()</span></code></a> … GUI-dialog for saving file</li>
+<li><p><a class="reference internal" href="#misc.askquestion" title="misc.askquestion"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.askquestion()</span></code></a> … GUI-dialog for y/n selection</p></li>
+<li><p><a class="reference internal" href="#misc.get_file" title="misc.get_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.get_file()</span></code></a> … GUI-dialog for file-selection</p></li>
+<li><p><a class="reference internal" href="#misc.get_dir" title="misc.get_dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.get_dir()</span></code></a> … GUI-dialog for directory-selection</p></li>
+<li><p><a class="reference internal" href="#misc.progressbar" title="misc.progressbar"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.progressbar()</span></code></a> … console-based progressbar, to indicate the level of completeness</p></li>
+<li><p><a class="reference internal" href="#misc.save_file" title="misc.save_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.save_file()</span></code></a> … GUI-dialog for saving file</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
@@ -62,119 +62,103 @@ applications</p>
 <p>Miscellaneous user interface utilities for</p>
 <blockquote>
 <div><ul class="simple">
-<li>selecting files or directories.
+<li><p>selecting files or directories.
 If nothing or a non-existing file/direcoty is selected, the return is “0”.
-Otherwise the file/directory is returned.</li>
-<li>waitbar</li>
+Otherwise the file/directory is returned.</p></li>
+<li><p>waitbar</p></li>
 </ul>
 </div></blockquote>
-<dl class="function">
+<dl class="py function">
 <dt id="misc.askquestion">
-<code class="descclassname">misc.</code><code class="descname">askquestion</code><span class="sig-paren">(</span><em>DialogTitle='Interactive Selection'</em>, <em>Question='Are we done yet?'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#askquestion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#misc.askquestion" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">askquestion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">Selection'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Question</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Are</span> <span class="pre">we</span> <span class="pre">done</span> <span class="pre">yet?'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#askquestion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.askquestion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ask the user a yes/no question</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>DialogTitle</strong> (<em>string</em>) – Window title</li>
-<li><strong>Question</strong> (<em>string</em>) – Question to the user</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
+<li><p><strong>Question</strong> (<em>string</em>) – Question to the user</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>yes_no</strong> – Selected answer.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">boolean</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>yes_no</strong> – Selected answer.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_wish</span> <span class="o">=</span> <span class="n">sksound</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">askquestion</span><span class="p">(</span><span class="s1">&#39;Work or Play&#39;</span><span class="p">,</span> <span class="s1">&#39;Do you want to go home?&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_wish</span> <span class="o">=</span> <span class="n">sksound</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">askquestion</span><span class="p">(</span><span class="s1">&#39;Work or Play&#39;</span><span class="p">,</span> <span class="s1">&#39;Do you want to go home?&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="misc.get_dir">
-<code class="descclassname">misc.</code><code class="descname">get_dir</code><span class="sig-paren">(</span><em>DialogTitle='Select Directory'</em>, <em>DefaultName='.'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#misc.get_dir" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">get_dir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">Directory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select a directory</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>DialogTitle</strong> (<em>string</em>) – Window title</li>
-<li><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
+<li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>directory</strong> – Selected directory.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">string</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>directory</strong> – Selected directory.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myDir</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">getdir</span><span class="p">(</span><span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp&#39;</span><span class="p">,</span> <span class="s1">&#39;Pick your directory&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myDir</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">getdir</span><span class="p">(</span><span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp&#39;</span><span class="p">,</span> <span class="s1">&#39;Pick your directory&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="misc.get_file">
-<code class="descclassname">misc.</code><code class="descname">get_file</code><span class="sig-paren">(</span><em>FilterSpec='*'</em>, <em>DialogTitle='Select File: '</em>, <em>DefaultName=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#misc.get_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">get_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selecting an existing file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>FilterSpec</strong> (<em>query-string</em>) – File filters</li>
-<li><strong>DialogTitle</strong> (<em>string</em>) – Window title</li>
-<li><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FilterSpec</strong> (<em>query-string</em>) – File filters</p></li>
+<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
+<li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>filename</strong> (<em>string</em>) – selected existing file</li>
-<li><strong>pathname</strong> (<em>string</em>) – selected path</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – selected existing file</p></li>
+<li><p><strong>pathname</strong> (<em>string</em>) – selected path</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="n">myPath</span><span class="p">)</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="n">myPath</span><span class="p">)</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="misc.progressbar">
-<code class="descclassname">misc.</code><code class="descname">progressbar</code><span class="sig-paren">(</span><em>it</em>, <em>prefix=''</em>, <em>size=60</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#progressbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#misc.progressbar" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">progressbar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#progressbar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.progressbar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shows a progress-bar on the commandline.
 This has the advantage that you don’t need to bother with windows
 managers. Nifty coding!</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>it</strong> (<em>integer array</em>) – index variable</li>
-<li><strong>prefix</strong> (<em>string</em>) – Text preceding the progress-bar</li>
-<li><strong>size</strong> (<em>integer</em>) – Length of progress-bar</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>it</strong> (<em>integer array</em>) – index variable</p></li>
+<li><p><strong>prefix</strong> (<em>string</em>) – Text preceding the progress-bar</p></li>
+<li><p><strong>size</strong> (<em>integer</em>) – Length of progress-bar</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">progressbar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span> <span class="s1">&#39;Computing &#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="c1">#print(ii)</span>
 <span class="gp">&gt;&gt;&gt; </span>   <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
@@ -182,32 +166,28 @@ managers. Nifty coding!</p>
 </div>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="misc.save_file">
-<code class="descclassname">misc.</code><code class="descname">save_file</code><span class="sig-paren">(</span><em>FilterSpec='*'</em>, <em>DialogTitle='Save File: '</em>, <em>DefaultName=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#save_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#misc.save_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">save_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Save</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#save_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.save_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selecting an existing or new file:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>FilterSpec</strong> (<em>string</em>) – File filters.</li>
-<li><strong>DialogTitle</strong> (<em>string</em>) – Window title.</li>
-<li><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>FilterSpec</strong> (<em>string</em>) – File filters.</p></li>
+<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title.</p></li>
+<li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>filename</strong> (<em>string</em>) – Selected file.</li>
-<li><strong>pathname</strong> (<em>string</em>) – Selecte path.</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – Selected file.</p></li>
+<li><p><strong>pathname</strong> (<em>string</em>) – Selecte path.</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="n">myPath</span><span class="p">)</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">savefile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="n">myPath</span><span class="p">)</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">savefile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -216,6 +196,7 @@ managers. Nifty coding!</p>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -244,17 +225,15 @@ managers. Nifty coding!</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -271,12 +250,13 @@ managers. Nifty coding!</p>
         <li class="right" >
           <a href="sounds.html" title="Sound Processing Utilities"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.3 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">misc</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2019, thomas haslwanter.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+        &#169; Copyright 2021, thomas haslwanter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
     </div>
   </body>
 </html>

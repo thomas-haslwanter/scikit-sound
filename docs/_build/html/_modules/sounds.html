@@ -1,19 +1,18 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>sounds &#8212; scikit-sound 0.2.3 documentation</title>
-    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sounds &#8212; scikit-sound 0.2.5 documentation</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/sksound.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -28,8 +27,9 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.3 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.5 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
     </div>  
 
@@ -76,7 +76,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Date:   March-2019</span>
+<span class="sd">Date:   March-2021</span>
 <span class="sd">Author: thomas haslwanter</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
@@ -87,7 +87,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">scipy.io.wavfile</span> <span class="k">import</span> <span class="n">read</span><span class="p">,</span> <span class="n">write</span>
+<span class="kn">from</span> <span class="nn">scipy.io.wavfile</span> <span class="kn">import</span> <span class="n">read</span><span class="p">,</span> <span class="n">write</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
 <span class="kn">import</span> <span class="nn">subprocess</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -105,7 +105,7 @@
     
 <span class="kn">import</span> <span class="nn">misc</span>
 
-<span class="kn">from</span> <span class="nn">sksound</span> <span class="k">import</span> <span class="n">misc</span>
+<span class="kn">from</span> <span class="nn">sksound</span> <span class="kn">import</span> <span class="n">misc</span>
 
 <span class="c1"># On Win playing sound works automatically</span>
 <span class="c1"># For the other packages you need the module &quot;pygame&quot;</span>
@@ -137,7 +137,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Set the name of the config-file, and the properties</span>
 <span class="sd">        &quot;ffmpeg&quot; and &quot;ffplay&quot; of the FFMPEG_info object&quot;&quot;&quot;</span>
         
@@ -166,6 +166,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">]</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;ffplay&#39;</span><span class="p">]</span>
         
+                
 <div class="viewcode-block" id="FFMPEG_info.set"><a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info.set">[docs]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the config-filename, and write the FFMPEG_info</span>
@@ -264,8 +265,8 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; from sksound.sounds import Sound</span>
-<span class="sd">    &gt;&gt;&gt; mySound1 = Sound()</span>
-<span class="sd">    &gt;&gt;&gt; mySound2 = Sound(&#39;test.wav&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; mySound1 = Sound()                  # here the user is prompted for an input file</span>
+<span class="sd">    &gt;&gt;&gt; mySound2 = Sound(&#39;test.wav&#39;)     # here the input file is provided directly</span>
 <span class="sd">    &gt;&gt;&gt;</span>
 <span class="sd">    &gt;&gt;&gt; rate = 22050</span>
 <span class="sd">    &gt;&gt;&gt; dt = 1./rate</span>
@@ -278,11 +279,11 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inData</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inRate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inData</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inRate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Initialize a Sound object &quot;&quot;&quot;</span>
         
         <span class="c1"># Information about FFMPEG</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="n">FFMPEG_info</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg_info</span> <span class="o">=</span> <span class="n">FFMPEG_info</span><span class="p">()</span>
         
         <span class="k">if</span> <span class="n">inData</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">inRate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -303,6 +304,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">inFile</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
         
+                
 <div class="viewcode-block" id="Sound.read_sound"><a class="viewcode-back" href="../sounds.html#sounds.Sound.read_sound">[docs]</a>    <span class="k">def</span> <span class="nf">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
@@ -339,14 +341,14 @@
        
         <span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">inFile</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">ext</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;wav&#39;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg_info</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorry, need FFMPEG for non-WAV files!&#39;</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
                 <span class="k">raise</span> <span class="n">NoFFMPEG_Error</span>
                 
             <span class="n">outFile</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s1">&#39;.wav&#39;</span>
-            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">ffmpeg</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">inFile</span><span class="p">,</span> <span class="n">outFile</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span><span class="p">]</span>
+            <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg_info</span><span class="o">.</span><span class="n">ffmpeg</span><span class="p">,</span> <span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="n">inFile</span><span class="p">,</span> <span class="n">outFile</span><span class="p">,</span> <span class="s1">&#39;-y&#39;</span><span class="p">]</span>
             <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Infile converted from &#39;</span> <span class="o">+</span> <span class="n">ext</span> <span class="o">+</span> <span class="s1">&#39; to &quot;.wav&quot;&#39;</span><span class="p">)</span>
             
@@ -389,8 +391,7 @@
 
 <span class="sd">       Examples</span>
 <span class="sd">       --------</span>
-<span class="sd">       &gt;&gt;&gt; mySound = Sound()</span>
-<span class="sd">       &gt;&gt;&gt; mySound.read_sound(&#39;test.wav&#39;)</span>
+<span class="sd">       &gt;&gt;&gt; mySound = Sound(&#39;test.wav&#39;)</span>
 <span class="sd">       &gt;&gt;&gt; mySound.play()</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -415,7 +416,7 @@
                     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
                     
                     <span class="c1"># If you want to use FFMPEG instead, use the following commands:</span>
-                    <span class="c1">#cmd = [self.info.ffplay, &#39;-autoexit&#39;, &#39;-nodisp&#39;, &#39;-i&#39;, tmpFile.name]</span>
+                    <span class="c1">#cmd = [self.ffmpeg_info.ffplay, &#39;-autoexit&#39;, &#39;-nodisp&#39;, &#39;-i&#39;, tmpFile.name]</span>
                     <span class="c1">#subprocess.run(cmd)</span>
                     
             <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">):</span>
@@ -435,7 +436,7 @@
                     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
                     
                     <span class="c1"># If you want to use FFMPEG instead, use the following commands:</span>
-                    <span class="c1">#cmd = [self.info.ffplay, &#39;-autoexit&#39;, &#39;-nodisp&#39;, &#39;-i&#39;, self.source]</span>
+                    <span class="c1">#cmd = [self.ffmpeg_info.ffplay, &#39;-autoexit&#39;, &#39;-nodisp&#39;, &#39;-i&#39;, self.source]</span>
                     <span class="c1">#subprocess.run(cmd)</span>
                     
         <span class="k">except</span> <span class="ne">SystemError</span><span class="p">:</span>
@@ -459,6 +460,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setInfo</span><span class="p">()</span></div>
 
+        
 <div class="viewcode-block" id="Sound.write_wav"><a class="viewcode-back" href="../sounds.html#sounds.Sound.write_wav">[docs]</a>    <span class="k">def</span> <span class="nf">write_wav</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
@@ -478,8 +480,7 @@
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; mySound = Sound()</span>
-<span class="sd">        &gt;&gt;&gt; mySound.read_sound(&#39;test.wav&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; mySound = Sound(&#39;test.wav&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; mySound.write_wav()</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -501,6 +502,7 @@
         
         <span class="k">return</span> <span class="n">full_out_file</span></div>
     
+    
 <div class="viewcode-block" id="Sound.get_info"><a class="viewcode-back" href="../sounds.html#sounds.Sound.get_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return information about the sound.</span>
@@ -520,10 +522,9 @@
 <span class="sd">            </span>
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; mySound = Sound()</span>
-<span class="sd">        &gt;&gt;&gt; mySound.read_sound(&#39;test.wav&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; mySound = Sound(&#39;test.wav&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; info = mySound.get_info()</span>
-<span class="sd">        &gt;&gt;&gt; (source, rate, numChannels, totalSamples, duration, bitsPerSample) = mySound.info()</span>
+<span class="sd">        &gt;&gt;&gt; (source, rate, numChannels, totalSamples, duration, bitsPerSample) = mySound.get_info()</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -534,6 +535,7 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">dataType</span><span class="p">)</span></div>
 
+    
 <div class="viewcode-block" id="Sound.summary"><a class="viewcode-back" href="../sounds.html#sounds.Sound.summary">[docs]</a>    <span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Display information about the sound.</span>
@@ -565,6 +567,7 @@
                 <span class="s1">&#39;DataType&#39;</span><span class="p">:</span><span class="n">dataType</span><span class="p">}</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span></div>
         
+        
     <span class="k">def</span> <span class="nf">_setInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Set the information properties of that sound &quot;&quot;&quot;</span>
 
@@ -584,16 +587,15 @@
         <span class="p">(</span><span class="n">my_file</span><span class="p">,</span> <span class="n">my_path</span><span class="p">)</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">FilterSpec</span><span class="o">=</span><span class="s1">&#39;*.wav&#39;</span><span class="p">,</span> 
                                     <span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;Select sound-input:&#39;</span><span class="p">,</span> 
                                     <span class="n">DefaultName</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-        <span class="n">full_in_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">my_path</span><span class="p">,</span> <span class="n">my_file</span><span class="p">)</span>
-        <span class="c1"># filetypes=[&#39;*.wav&#39;, &#39;*.mp3&#39;])</span>
-        
-        <span class="k">if</span> <span class="n">full_in_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">my_path</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No file selected&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
+            <span class="n">full_in_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">my_path</span><span class="p">,</span> <span class="n">my_file</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selection: &#39;</span> <span class="o">+</span> <span class="n">full_in_file</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">full_in_file</span></div>
 
+        
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../sounds.html#sounds.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot; Main function, to test the module &quot;&quot;&quot;</span>
 
@@ -648,10 +650,12 @@
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+    <span class="n">my_sound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+    <span class="c1">#main()</span>
 
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -661,17 +665,15 @@
               <img class="logo" src="../_static/sksound.png" alt="Logo"/>
             </a></p>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -685,13 +687,14 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.3 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.5 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, thomas haslwanter.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
     </div>
   </body>
 </html>

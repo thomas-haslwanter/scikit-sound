@@ -4,8 +4,11 @@ scikit-sound - Documentation
 *scikit-sound* is a library for working with sound files.
 
 It is hosted under https://github.com/thomas-haslwanter/scikit-sound, and
-contains only one module: :py:mod:`sounds` . This module has two classes for working
-with sounds:
+contains two modules:
+:py:mod:`sounds` : utuilies for working with sound data
+:py:mod:`misc` : utilities for file- and directory selection, and for user-interaction
+
+The module :py:mod:`sounds` has two classes:
 
     - :py:class:`sounds.Sound` ... reading in, and working with sounds.
     - :py:class:`sounds.FFMPEG_info` ... handling the FFMPEG installation required for working with MP3-files etc.
@@ -82,9 +85,9 @@ Indices and tables
 
 .. note::
     | *Author:*     Thomas Haslwanter
-    | *Version:*    0.2.3
-    | *Date:*       March 2019
+    | *Version:*    0.2.6
+    | *Date:*       March 2021
     | *email:*      thomas.haslwanter@fh-linz.at
-    | *Copyright (c):*      2019, Thomas Haslwanter. All rights reserved.
+    | *Copyright (c):*      2021, Thomas Haslwanter. All rights reserved.
     | *Licence:*    This work is licensed under the `BSD 2-Clause License <http://opensource.org/licenses/BSD-2-Clause>`_
 

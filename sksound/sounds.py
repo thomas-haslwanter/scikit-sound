@@ -35,7 +35,7 @@ Compatible with Python >=3.5
 """
 
 '''
-Date:   March-2019
+Date:   March-2021
 Author: thomas haslwanter
 
 '''
@@ -125,6 +125,7 @@ class FFMPEG_info:
                 self.ffmpeg = info['ffmpeg']
                 self.ffplay = info['ffplay']
         
+                
     def set(self):
         """
         Set the config-filename, and write the FFMPEG_info
@@ -223,8 +224,8 @@ class Sound:
     Examples
     --------
     >>> from sksound.sounds import Sound
-    >>> mySound1 = Sound()
-    >>> mySound2 = Sound('test.wav')
+    >>> mySound1 = Sound()                  # here the user is prompted for an input file
+    >>> mySound2 = Sound('test.wav')     # here the input file is provided directly
     >>>
     >>> rate = 22050
     >>> dt = 1./rate
@@ -241,7 +242,7 @@ class Sound:
         """ Initialize a Sound object """
         
         # Information about FFMPEG
-        self.info = FFMPEG_info()
+        self.ffmpeg_info = FFMPEG_info()
         
         if inData is not None:
             if inRate is None:
@@ -262,6 +263,7 @@ class Sound:
                 self.source = inFile
                 self.read_sound(self.source)
         
+                
     def read_sound(self, inFile):
         """
 
@@ -298,14 +300,14 @@ class Sound:
        
         (root, ext) = os.path.splitext(inFile)
         if ext[1:].lower() != 'wav':
-            if self.info.ffmpeg == None:
+            if self.ffmpeg_info.ffmpeg == None:
                 print('Sorry, need FFMPEG for non-WAV files!')
                 self.rate = None
                 self.data = None
                 raise NoFFMPEG_Error
                 
             outFile = root + '.wav'
-            cmd = [self.info.ffmpeg, '-i', inFile, outFile, '-y']
+            cmd = [self.ffmpeg_info.ffmpeg, '-i', inFile, outFile, '-y']
             subprocess.run(cmd)
             print('Infile converted from ' + ext + ' to ".wav"')
             
@@ -348,8 +350,7 @@ class Sound:
 
        Examples
        --------
-       >>> mySound = Sound()
-       >>> mySound.read_sound('test.wav')
+       >>> mySound = Sound('test.wav')
        >>> mySound.play()
 
         """
@@ -374,7 +375,7 @@ class Sound:
                     time.sleep(self.duration)
                     
                     # If you want to use FFMPEG instead, use the following commands:
-                    #cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', tmpFile.name]
+                    #cmd = [self.ffmpeg_info.ffplay, '-autoexit', '-nodisp', '-i', tmpFile.name]
                     #subprocess.run(cmd)
                     
             elif os.path.exists(self.source):
@@ -394,7 +395,7 @@ class Sound:
                     time.sleep(self.duration)
                     
                     # If you want to use FFMPEG instead, use the following commands:
-                    #cmd = [self.info.ffplay, '-autoexit', '-nodisp', '-i', self.source]
+                    #cmd = [self.ffmpeg_info.ffplay, '-autoexit', '-nodisp', '-i', self.source]
                     #subprocess.run(cmd)
                     
         except SystemError:
@@ -418,6 +419,7 @@ class Sound:
         self.source = None
         self._setInfo()
 
+        
     def write_wav(self, full_out_file = None):
         """
 
@@ -437,8 +439,7 @@ class Sound:
 
         Examples
         --------
-        >>> mySound = Sound()
-        >>> mySound.read_sound('test.wav')
+        >>> mySound = Sound('test.wav')
         >>> mySound.write_wav()
 
         """
@@ -460,6 +461,7 @@ class Sound:
         
         return full_out_file
     
+    
     def get_info(self):
         """
         Return information about the sound.
@@ -479,10 +481,9 @@ class Sound:
             
         Examples
         --------
-        >>> mySound = Sound()
-        >>> mySound.read_sound('test.wav')
+        >>> mySound = Sound('test.wav')
         >>> info = mySound.get_info()
-        >>> (source, rate, numChannels, totalSamples, duration, bitsPerSample) = mySound.info()
+        >>> (source, rate, numChannels, totalSamples, duration, bitsPerSample) = mySound.get_info()
 
         """
 
@@ -493,6 +494,7 @@ class Sound:
                 self.duration,
                 self.dataType)
 
+    
     def summary(self):
         """
         Display information about the sound.
@@ -524,6 +526,7 @@ class Sound:
                 'DataType':dataType}
         print(yaml.dump(info, default_flow_style=False))
         
+        
     def _setInfo(self):
         """ Set the information properties of that sound """
 
@@ -551,6 +554,7 @@ class Sound:
             print('Selection: ' + full_in_file)
             return full_in_file
 
+        
 def main():
     """ Main function, to test the module """
 
