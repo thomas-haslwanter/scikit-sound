@@ -14,4 +14,4 @@ v0.2.3, 28-March-2019 -- problem with Sound.write() when used without input fixe
 v0.2.3b, 05-April-2019 -- Documentation updated
 v0.2.4, 13-April-2019 -- Try to keep file-/dir-selection windows in the front
 v0.2.5, 13-April-2019 -- Exit gracefully if user cancels file selection
-
+v0.2.6, 28-March-2021 -- updated docu; renamed self.info -> self.ffmpeg_info
