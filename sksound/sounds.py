@@ -34,11 +34,8 @@ Compatible with Python >=3.5
 
 """
 
-'''
-Date:   March-2021
-Author: thomas haslwanter
-
-'''
+# Author: thomas haslwanter
+# Date:   March-2021
 
 
 # "ffmpeg" has to be installed externally, into the location listed below

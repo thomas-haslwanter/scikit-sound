@@ -1,4 +1,4 @@
-'''
+"""
 Miscellaneous user interface utilities for
 
     - selecting files or directories.
@@ -6,11 +6,10 @@ Miscellaneous user interface utilities for
       Otherwise the file/directory is returned.
     - waitbar
 
-'''
+"""
 
-'''
-author: Thomas Haslwanter
-'''
+# author: Thomas Haslwanter; date: April-2021
+
 
 import os
 # import matplotlib.pyplot as plt
@@ -24,7 +23,7 @@ from tkinter import messagebox
     
     
 def progressbar(it, prefix = "", size = 60):
-    '''
+    """
     Shows a progress-bar on the commandline.
     This has the advantage that you don't need to bother with windows
     managers. Nifty coding!
@@ -45,9 +44,10 @@ def progressbar(it, prefix = "", size = 60):
     >>>    #print(ii)
     >>>    time.sleep(0.05)
     
-    '''
+    """
 
     count = len(it)
+    
     def _show(_i):
         # Helper function to print the desired information line.
 
@@ -62,8 +62,9 @@ def progressbar(it, prefix = "", size = 60):
     sys.stdout.write("\n")
     sys.stdout.flush()
     
+    
 def get_file(FilterSpec='*', DialogTitle='Select File: ', DefaultName=''):
-    '''
+    """
     Selecting an existing file.
     
     Parameters
@@ -86,7 +87,7 @@ def get_file(FilterSpec='*', DialogTitle='Select File: ', DefaultName=''):
     --------
     >>> (myFile, myPath) = skinematics.ui.getfile('*.py', 'Testing file-selection', 'c:\\temp\\test.py')
     
-    '''
+    """
     
     root = tkinter.Tk()
     root.withdraw()
@@ -106,8 +107,9 @@ def get_file(FilterSpec='*', DialogTitle='Select File: ', DefaultName=''):
         fileName = os.path.basename(fullInFile)
         return (fileName, dirName)
         
+    
 def save_file(FilterSpec='*',DialogTitle='Save File: ', DefaultName=''):
-    '''
+    """
     Selecting an existing or new file:
     
     Parameters
@@ -132,7 +134,7 @@ def save_file(FilterSpec='*',DialogTitle='Save File: ', DefaultName=''):
     --------
     >>> (myFile, myPath) = skinematics.ui.savefile('*.py', 'Testing file-selection', 'c:\\temp\\test.py')
 
-    '''
+    """
     
     root = tkinter.Tk()
     root.withdraw()
@@ -152,8 +154,9 @@ def save_file(FilterSpec='*',DialogTitle='Save File: ', DefaultName=''):
         
     return (fileName, dirName)
 
+
 def get_dir(DialogTitle='Select Directory', DefaultName='.'):
-    ''' Select a directory
+    """ Select a directory
     
     Parameters
     ----------
@@ -173,7 +176,7 @@ def get_dir(DialogTitle='Select Directory', DefaultName='.'):
     --------
     >>> myDir = skinematics.ui.getdir('c:\\temp', 'Pick your directory')
     
-    '''
+    """
     
     root = tkinter.Tk()
     root.withdraw()
@@ -191,7 +194,7 @@ def get_dir(DialogTitle='Select Directory', DefaultName='.'):
 
     
 def askquestion (DialogTitle='Interactive Selection', Question='Are we done yet?'):
-    ''' Ask the user a yes/no question
+    """ Ask the user a yes/no question
     
     Parameters
     ----------
@@ -211,22 +214,28 @@ def askquestion (DialogTitle='Interactive Selection', Question='Are we done yet?
     --------
     >>> my_wish = sksound.misc.askquestion('Work or Play', 'Do you want to go home?')
     
-    '''
+    """
     
     root = tkinter.Tk()
     root.withdraw()
     
-    yes_no = messagebox.askyesno(title=DialogTitle, message=Question)
+    # On some systems, this dialog remains in the back
+    # To overcome that, move it up. Unfortunately, this somehow also makes the
+    # "root" visible again :(
+    # To be fixed sometime ...
+    to_top = tkinter.Toplevel(root)
+    yes_no = messagebox.askyesno(title=DialogTitle, message=Question, master=to_top)
     
     # Close the Tk-window manager again
     root.destroy()
     
     return yes_no
 
+
 if __name__ == "__main__":   
     # Test functions
     
-    '''
+    """
     result = askquestion(DialogTitle='Interactive choice', 
                         Question='Are we done yet?')
     print('You have selected {0}'.format(result))
@@ -253,4 +262,4 @@ if __name__ == "__main__":
     app = Demo1(root, sys._getframe())
     root.mainloop()
 
-    '''
+    """

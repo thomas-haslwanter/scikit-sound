@@ -15,3 +15,6 @@ v0.2.3b, 05-April-2019 -- Documentation updated
 v0.2.4, 13-April-2019 -- Try to keep file-/dir-selection windows in the front
 v0.2.5, 13-April-2019 -- Exit gracefully if user cancels file selection
 v0.2.6, 28-March-2021 -- updated docu; renamed self.info -> self.ffmpeg_info
+v0.2.7, 02-April-2021 -- left tkinter root window visible to avoid some crashes
+v0.2.8, 02-April-2021 -- [erroneous fix]
+v0.2.9, 02-April-2021 -- moved the tkinter root to the top to be visible

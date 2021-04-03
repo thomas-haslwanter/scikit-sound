@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: scikit-sound
-Version: 0.2.6
+Version: 0.2.9
 Summary: Python utilites for working with sound signals
 Home-page: http://work.thaslwanter.at/sksound/html
 Author: Thomas Haslwanter
@@ -22,8 +22,8 @@ Description: ============
         http://work.thaslwanter.at/sksound/html/
         
         :Author:  Thomas Haslwanter
-        :Date:    28-03-2021
-        :Ver:     0.2.6
+        :Date:    02-04-2021
+        :Ver:     0.2.9
         :Licence: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
         :Copyright:
             |copy| 2021, Thomas Haslwanter, all rights reserved.
