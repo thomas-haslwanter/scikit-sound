@@ -244,7 +244,7 @@ class Sound:
         if inData is not None:
             if inRate is None:
                 print('Set the "rate" to the default value (8012 Hz).')
-                rate = 8012.0
+                inRate = 8012.0
             self.generate_sound(inData, inRate)
         else: 
             if inFile is None:
