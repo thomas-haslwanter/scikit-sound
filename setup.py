@@ -5,7 +5,7 @@ import sys
 if sys.platform == 'linux':
     setup(
         name='scikit-sound',
-        version="0.2.9",
+        version="0.2.10",
         packages=find_packages(),
     
         include_package_data=True,
@@ -37,7 +37,7 @@ if sys.platform == 'linux':
 else:
     setup(
         name='scikit-sound',
-        version="0.2.9",
+        version="0.2.10",
         packages=find_packages(),
     
         include_package_data=True,

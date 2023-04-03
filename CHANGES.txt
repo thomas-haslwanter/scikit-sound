@@ -18,3 +18,4 @@ v0.2.6, 28-March-2021 -- updated docu; renamed self.info -> self.ffmpeg_info
 v0.2.7, 02-April-2021 -- left tkinter root window visible to avoid some crashes
 v0.2.8, 02-April-2021 -- [erroneous fix]
 v0.2.9, 02-April-2021 -- moved the tkinter root to the top to be visible
+v0.2.10, 03-April-2022 -- fixed error in displayed name of out-file

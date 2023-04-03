@@ -35,7 +35,7 @@ Compatible with Python >=3.5
 """
 
 # Author: thomas haslwanter
-# Date:   March-2021
+# Date:   April-2022
 
 
 # "ffmpeg" has to be installed externally, into the location listed below
@@ -450,7 +450,8 @@ class Sound:
                 print('Output discarded.')
                 return 0
         else:
-            (out_file , out_dir) = os.path.split(full_out_file)
+            full_out_file = os.path.abspath(full_out_file)
+            (out_dir , out_file) = os.path.split(full_out_file)
 
         write(str(full_out_file), int(self.rate), self.data)
         print('Sounddata written to ' + out_file + ', with a sample rate of ' + str(self.rate))
