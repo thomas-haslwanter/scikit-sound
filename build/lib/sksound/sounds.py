@@ -35,8 +35,7 @@ Compatible with Python >=3.5
 """
 
 # Author: thomas haslwanter
-# Date:   April-2022
-
+# Date:   Dec-2023
 
 # "ffmpeg" has to be installed externally, into the location listed below
 # You can obtain it for free from http://ffmpeg.org
@@ -58,7 +57,7 @@ import sys
 file_dir = os.path.dirname(__file__)
 if file_dir not in sys.path:
     sys.path.insert(0, file_dir)
-    
+
 import misc
 
 from sksound import misc
@@ -96,22 +95,24 @@ class FFMPEG_info:
     def __init__(self):
         """Set the name of the config-file, and the properties
         "ffmpeg" and "ffplay" of the FFMPEG_info object"""
-        
+
         app_name = 'FFMPEG_info'
         app_author = 'sksound'
-        
+
         # The package "appdirs" allows an OS-independent implementation
         user_data_dir = appdirs.user_data_dir(app_name, app_author)
         if not os.path.exists(user_data_dir):
             os.makedirs(user_data_dir)
         self.config_file =  os.path.join(user_data_dir, 'ffmpeg.json')
-        
+
         if not os.path.exists(self.config_file):
-            
+
             # Check if it is in the system path
             try:
-                completed_process = subprocess.run('ffmpeg')
-                completed_process = subprocess.run('ffplay')
+                completed_process = subprocess.run(
+                    'ffmpeg', stderr=subprocess.DEVNULL)
+                completed_process = subprocess.run('ffplay', stderr=subprocess.DEVNULL)
+
                 self.ffmpeg = 'ffmpeg'
                 self.ffplay = 'ffplay'
             except FileNotFoundError:
@@ -121,8 +122,8 @@ class FFMPEG_info:
                 info = json.load(in_file)
                 self.ffmpeg = info['ffmpeg']
                 self.ffplay = info['ffplay']
-        
-                
+
+
     def set(self):
         """
         Set the config-filename, and write the FFMPEG_info
@@ -130,32 +131,32 @@ class FFMPEG_info:
 
         If FFMPEG is not installed, these are set to "None".
         """
-        
+
         ffmpeg_installed = misc.askquestion(DialogTitle='FFMPEG Check',
                                            Question='Is FFMPEG installed?')
-        
+
         if ffmpeg_installed:
             ffmpeg_dir = misc.get_dir(DialogTitle='Please select the directory where FFMPEG (binary) is installed:')
-            
+
             if sys.platform=='win32':
                 self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
                 self.ffplay = os.path.join(ffmpeg_dir, 'ffplay.exe')
             else:
                 self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg')
                 self.ffplay = os.path.join(ffmpeg_dir, 'ffplay')
-            
+
             if not os.path.exists(self.ffmpeg):
                 print('Sorry, {0} does not exist!'.format(self.ffmpeg))
                 return
-            
+
             if not os.path.exists(self.ffplay):
                 print('Sorry, {0} does not exist!'.format(self.ffplay))
                 return
-            
+
         else:
             self.ffmpeg = None
             self.ffplay = None
-        
+
         # Save them to the default config file
         info = {'ffmpeg':self.ffmpeg, 'ffplay': self.ffplay}
         try:
@@ -166,15 +167,15 @@ class FFMPEG_info:
             curDir = os.path.abspath(os.curdir)
             print('Current directory: {0}'.format(curDir))
             print('Error: {0}'.format(e))
-        
+
         return
-    
-    
+
+
 class Sound:
     """
 
     Class for working with sound in Python.
-    
+
     A Sound object can be initialized
         - by giving a filename
         - by providing "int16" data and a rate
@@ -200,7 +201,7 @@ class Sound:
     For non WAV-files, the file is first converted to WAV using
     FFMPEG, and then read in. A warning is generated, to avoid
     unintentional deletion of existing WAV-files.
-    
+
     SoundProperties:
         - source
         - data
@@ -217,7 +218,7 @@ class Sound:
         - read_sound
         - summary
         - write_wav
-        
+
     Examples
     --------
     >>> from sksound.sounds import Sound
@@ -235,19 +236,20 @@ class Sound:
 
     """
 
-    def __init__(self, inFile = None, inData = None, inRate = None):
+    def __init__(self, inFile: str = '', inData: np.ndarray = None, inRate: float = None):
         """ Initialize a Sound object """
-        
+
         # Information about FFMPEG
         self.ffmpeg_info = FFMPEG_info()
-        
+
+        #self.data = np.empty(0)
         if inData is not None:
             if inRate is None:
                 print('Set the "rate" to the default value (8012 Hz).')
                 rate = 8012.0
             self.generate_sound(inData, inRate)
-        else: 
-            if inFile is None:
+        else:
+            if inFile == '':
                 inFile = self._selectInput()
                 if inFile == 0:
                     return
@@ -259,8 +261,8 @@ class Sound:
                 inFile = self._selectInput()
                 self.source = inFile
                 self.read_sound(self.source)
-        
-                
+
+
     def read_sound(self, inFile):
         """
 
@@ -294,7 +296,7 @@ class Sound:
         if not os.path.exists(inFile):
             print('{0} does not exist!'.format(inFile))
             raise FileNotFoundError
-       
+
         (root, ext) = os.path.splitext(inFile)
         if ext[1:].lower() != 'wav':
             if self.ffmpeg_info.ffmpeg == None:
@@ -302,27 +304,27 @@ class Sound:
                 self.rate = None
                 self.data = None
                 raise NoFFMPEG_Error
-                
+
             outFile = root + '.wav'
             cmd = [self.ffmpeg_info.ffmpeg, '-i', inFile, outFile, '-y']
             subprocess.run(cmd)
             print('Infile converted from ' + ext + ' to ".wav"')
-            
+
             inFile = outFile
             self.source = outFile
 
         self.rate, self.data = read(inFile)
-        
+
         # Set the filename
         self.source = inFile
-        
+
         # Make sure that the data are in some integer format
         # Otherwise, e.g. Windows has difficulty playing the sound
         # Note that "self.source" is set to "None", in order to
         # play the correct, converted file with "play"
         if not np.issubdtype(self.data.dtype, np.integer):
             self.generate_sound(self.data, self.rate)
-            
+
         self._setInfo()
         print('data read in!')
 
@@ -358,7 +360,7 @@ class Sound:
                 tmpFile = tempfile.NamedTemporaryFile(suffix='.wav', delete=False)
                 tmpFile.close()
                 self.write_wav(tmpFile.name)
-                
+
                 # ... and play that file
                 if sys.platform=='win32':
                     winsound.PlaySound(tmpFile.name, winsound.SND_FILENAME)
@@ -370,15 +372,15 @@ class Sound:
                     pygame.mixer.music.load(tmpFile.name)
                     pygame.mixer.music.play()
                     time.sleep(self.duration)
-                    
+
                     # If you want to use FFMPEG instead, use the following commands:
                     #cmd = [self.ffmpeg_info.ffplay, '-autoexit', '-nodisp', '-i', tmpFile.name]
                     #subprocess.run(cmd)
-                    
+
             elif os.path.exists(self.source):
                 # If you have a given input file ...
                 print('Playing ' + self.source)
-                
+
                 # ... then play that one
                 if sys.platform == 'win32':
                     winsound.PlaySound(str(self.source), winsound.SND_FILENAME)
@@ -390,17 +392,17 @@ class Sound:
                     pygame.mixer.music.load(self.source)
                     pygame.mixer.music.play()
                     time.sleep(self.duration)
-                    
+
                     # If you want to use FFMPEG instead, use the following commands:
                     #cmd = [self.ffmpeg_info.ffplay, '-autoexit', '-nodisp', '-i', self.source]
                     #subprocess.run(cmd)
-                    
+
         except SystemError:
             print('If you don''t have FFMPEG available, you can e.g. use installed audio-files. E.g.:')
             print('import subprocess')
             print('subprocess.run([r"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", r"C:\Music\14_Streets_of_Philadelphia.mp3"])')
 
-            
+
     def generate_sound(self, data, rate):
         """ Set the properties of a Sound-object. """
 
@@ -410,13 +412,13 @@ class Sound:
             defaultAmp = 2**13
             # Watch out with integer artefacts!
             data = np.int16(data * (defaultAmp / np.max(data)))
-            
+
         self.data = data
         self.rate = rate
         self.source = None
         self._setInfo()
 
-        
+
     def write_wav(self, full_out_file = None):
         """
 
@@ -432,7 +434,7 @@ class Sound:
         Returns
         -------
         None :
-            
+
 
         Examples
         --------
@@ -442,8 +444,8 @@ class Sound:
         """
 
         if full_out_file is None:
-            
-            (out_file, out_dir) = misc.save_file(FilterSpec='*.wav', DialogTitle='Write sound to ...', 
+
+            (out_file, out_dir) = misc.save_file(FilterSpec='*.wav', DialogTitle='Write sound to ...',
                           DefaultName='')
             full_out_file = os.path.join(out_dir, out_file)
             if full_out_file is None:
@@ -456,17 +458,17 @@ class Sound:
         write(str(full_out_file), int(self.rate), self.data)
         print('Sounddata written to ' + out_file + ', with a sample rate of ' + str(self.rate))
         print('OutDir: ' + out_dir)
-        
+
         return full_out_file
-    
-    
+
+
     def get_info(self):
         """
         Return information about the sound.
 
         Parameters
         ----------
-        None : 
+        None :
 
         Returns
         -------
@@ -476,7 +478,7 @@ class Sound:
         totalSamples : number of total samples
         duration : duration [sec]
         bitsPerSample : bits per sample
-            
+
         Examples
         --------
         >>> mySound = Sound('test.wav')
@@ -492,19 +494,19 @@ class Sound:
                 self.duration,
                 self.dataType)
 
-    
+
     def summary(self):
         """
         Display information about the sound.
 
         Parameters
         ----------
-        None : 
+        None :
 
         Returns
         -------
         None :
-            
+
         Examples
         --------
         >>> mySound = Sound()
@@ -514,7 +516,7 @@ class Sound:
         """
 
         import yaml
-        
+
         (source, rate, numChannels, totalSamples, duration, dataType) = self.get_info()
         info = {'Source':source,
                 'SampleRate':rate,
@@ -523,8 +525,8 @@ class Sound:
                 'Duration':duration,
                 'DataType':dataType}
         print(yaml.dump(info, default_flow_style=False))
-        
-        
+
+
     def _setInfo(self):
         """ Set the information properties of that sound """
 
@@ -534,25 +536,26 @@ class Sound:
         else:
             self.numChannels = self.data.shape[1]
             self.totalSamples = self.data.shape[0]
-            
+
         self.duration = float(self.totalSamples)/self.rate # [sec]
         self.dataType = str(self.data.dtype)
-        
+
     def _selectInput(self):
         """ GUI for the selection of an in-file. """
 
-        (my_file, my_path) = misc.get_file(FilterSpec='*.wav', 
-                                    DialogTitle='Select sound-input:', 
+        (my_file, my_path) = misc.get_file(FilterSpec='*.wav',
+                                    DialogTitle='Select sound-input:',
                                     DefaultName='')
         if my_path == 0:
             print('No file selected')
             return 0
         else:
             full_in_file = os.path.join(my_path, my_file)
-            print('Selection: ' + full_in_file)
+            # misc.get_file already shows the selection
+            #print('Selection: ' + full_in_file)
             return full_in_file
 
-        
+
 def main():
     """ Main function, to test the module """
 
@@ -608,5 +611,6 @@ def main():
 
 if __name__ == '__main__':
     my_sound = Sound()
+    my_sound.play()
     #main()
 

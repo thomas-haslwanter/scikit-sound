@@ -19,3 +19,6 @@ v0.2.7, 02-April-2021 -- left tkinter root window visible to avoid some crashes
 v0.2.8, 02-April-2021 -- [erroneous fix]
 v0.2.9, 02-April-2021 -- moved the tkinter root to the top to be visible
 v0.2.10, 03-April-2022 -- fixed error in displayed name of out-file
+v0.2.11, 03-April-2023 -- implemented feedback from thmeier on github
+v0.2.12, 12-July-2023 -- re-compiled docs
+v0.2.13, 12-July-2023 -- polished the class 'sounds.Sound' a bit

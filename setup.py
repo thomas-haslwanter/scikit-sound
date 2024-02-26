@@ -1,20 +1,25 @@
+""" setup-file for scikit-sound """
+
+# author:   Thomas Haslwanter
+# date:     Dec-2023
+
 from setuptools import setup, find_packages
 import sys
 
 # Only need "pygame" on linux
-if sys.platform == 'linux':
+if sys.platform is 'linux':
     setup(
         name='scikit-sound',
-        version="0.2.10",
+        version="0.2.13",
         packages=find_packages(),
-    
+
         include_package_data=True,
         package_data = {'tests': ['*.wav', '*.mp3']},
-    
+
         # Project uses reStructuredText, so ensure that the docutils get
         # installed or upgraded on the target machine
         install_requires=['docutils>=0.3', 'appdirs', 'pygame'],
-    
+
         # metadata for upload to PyPI
         author       = "Thomas Haslwanter",
         author_email = "thomas.haslwanter@fh-linz.at",
@@ -33,20 +38,20 @@ if sys.platform == 'linux':
         test_suite   = 'nose.collector',
         tests_require=['nose'],
     )
-    
+
 else:
     setup(
         name='scikit-sound',
-        version="0.2.10",
+        version="0.2.13",
         packages=find_packages(),
-    
+
         include_package_data=True,
         package_data = {'tests': ['*.wav', '*.mp3']},
-    
+
         # Project uses reStructuredText, so ensure that the docutils get
         # installed or upgraded on the target machine
         install_requires=['docutils>=0.3', 'appdirs'],
-    
+
         # metadata for upload to PyPI
         author       = "Thomas Haslwanter",
         author_email = "thomas.haslwanter@fh-linz.at",

@@ -13,11 +13,11 @@ Homepage
 http://work.thaslwanter.at/sksound/html/
 
 :Author:  Thomas Haslwanter
-:Date:    03-04-2022
-:Ver:     0.2.10
+:Date:    06-12-2023
+:Ver:     0.2.13
 :Licence: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
 :Copyright:
-    |copy| 2022, Thomas Haslwanter, all rights reserved.
+    |copy| 2023, Thomas Haslwanter, all rights reserved.
 
 .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
 

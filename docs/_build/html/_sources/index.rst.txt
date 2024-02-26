@@ -55,7 +55,7 @@ the root directory of the package, and type
 
 Dependencies
 ^^^^^^^^^^^^
-numpy, scipy, easygui, appdirs, pygame
+numpy, scipy, appdirs, pygame (only on Linux)
 
 Testing
 -------
@@ -85,9 +85,9 @@ Indices and tables
 
 .. note::
     | *Author:*     Thomas Haslwanter
-    | *Version:*    0.2.6
-    | *Date:*       March 2021
+    | *Version:*    0.2.11
+    | *Date:*       April 2023
     | *email:*      thomas.haslwanter@fh-linz.at
-    | *Copyright (c):*      2021, Thomas Haslwanter. All rights reserved.
+    | *Copyright (c):*      2023, Thomas Haslwanter. All rights reserved.
     | *Licence:*    This work is licensed under the `BSD 2-Clause License <http://opensource.org/licenses/BSD-2-Clause>`_
 

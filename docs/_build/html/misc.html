@@ -1,20 +1,18 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>misc &#8212; scikit-sound 0.2.6 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>misc &#8212; scikit-sound 0.2.11 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     
-    <link rel="shortcut icon" href="_static/sksound.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Sound Processing Utilities" href="sounds.html" /> 
@@ -31,7 +29,7 @@
         <li class="right" >
           <a href="sounds.html" title="Sound Processing Utilities"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.11 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">misc</a></li> 
       </ul>
     </div>  
@@ -41,12 +39,12 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="misc">
-<span id="misc-label"></span><h1>misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h1>
+  <section id="misc">
+<span id="misc-label"></span><h1>misc<a class="headerlink" href="#misc" title="Permalink to this heading">¶</a></h1>
 <p>General utility routines, especially simple GUI dialogs for different
 applications</p>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#misc.askquestion" title="misc.askquestion"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.askquestion()</span></code></a> … GUI-dialog for y/n selection</p></li>
 <li><p><a class="reference internal" href="#misc.get_file" title="misc.get_file"><code class="xref py py-func docutils literal notranslate"><span class="pre">misc.get_file()</span></code></a> … GUI-dialog for file-selection</p></li>
@@ -56,9 +54,9 @@ applications</p>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="section" id="module-misc">
-<span id="details"></span><h2>Details<a class="headerlink" href="#module-misc" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-misc">
+<span id="details"></span><h2>Details<a class="headerlink" href="#module-misc" title="Permalink to this heading">¶</a></h2>
 <p>Miscellaneous user interface utilities for</p>
 <blockquote>
 <div><ul class="simple">
@@ -69,20 +67,20 @@ Otherwise the file/directory is returned.</p></li>
 </ul>
 </div></blockquote>
 <dl class="py function">
-<dt id="misc.askquestion">
-<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">askquestion</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">Selection'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Question</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Are</span> <span class="pre">we</span> <span class="pre">done</span> <span class="pre">yet?'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#askquestion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.askquestion" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="misc.askquestion">
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">askquestion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">Selection'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Question</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Are</span> <span class="pre">we</span> <span class="pre">done</span> <span class="pre">yet?'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#askquestion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.askquestion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ask the user a yes/no question</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
 <li><p><strong>Question</strong> (<em>string</em>) – Question to the user</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>yes_no</strong> – Selected answer.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>boolean</p>
 </dd>
 </dl>
@@ -93,20 +91,20 @@ Otherwise the file/directory is returned.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="misc.get_dir">
-<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">get_dir</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">Directory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_dir" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="misc.get_dir">
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">Directory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_dir" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select a directory</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
 <li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>directory</strong> – Selected directory.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>string</p>
 </dd>
 </dl>
@@ -117,18 +115,18 @@ Otherwise the file/directory is returned.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="misc.get_file">
-<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">get_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="misc.get_file">
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selecting an existing file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>FilterSpec</strong> (<em>query-string</em>) – File filters</p></li>
 <li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
 <li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>filename</strong> (<em>string</em>) – selected existing file</p></li>
 <li><p><strong>pathname</strong> (<em>string</em>) – selected path</p></li>
@@ -143,13 +141,13 @@ Otherwise the file/directory is returned.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="misc.progressbar">
-<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">progressbar</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#progressbar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.progressbar" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="misc.progressbar">
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">progressbar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#progressbar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.progressbar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shows a progress-bar on the commandline.
 This has the advantage that you don’t need to bother with windows
 managers. Nifty coding!</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>it</strong> (<em>integer array</em>) – index variable</p></li>
 <li><p><strong>prefix</strong> (<em>string</em>) – Text preceding the progress-bar</p></li>
@@ -167,18 +165,18 @@ managers. Nifty coding!</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="misc.save_file">
-<code class="sig-prename descclassname"><span class="pre">misc.</span></code><code class="sig-name descname"><span class="pre">save_file</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Save</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#save_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.save_file" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="misc.save_file">
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">save_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Save</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#save_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.save_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Selecting an existing or new file:</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>FilterSpec</strong> (<em>string</em>) – File filters.</p></li>
 <li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title.</p></li>
 <li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>filename</strong> (<em>string</em>) – Selected file.</p></li>
 <li><p><strong>pathname</strong> (<em>string</em>) – Selecte path.</p></li>
@@ -192,8 +190,8 @@ managers. Nifty coding!</p>
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -202,21 +200,29 @@ managers. Nifty coding!</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-            <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/sksound.png" alt="Logo"/>
-            </a></p>
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">misc</a><ul>
 <li><a class="reference internal" href="#functions">Functions</a></li>
-<li><a class="reference internal" href="#module-misc">Details</a></li>
+<li><a class="reference internal" href="#module-misc">Details</a><ul>
+<li><a class="reference internal" href="#misc.askquestion"><code class="docutils literal notranslate"><span class="pre">askquestion()</span></code></a></li>
+<li><a class="reference internal" href="#misc.get_dir"><code class="docutils literal notranslate"><span class="pre">get_dir()</span></code></a></li>
+<li><a class="reference internal" href="#misc.get_file"><code class="docutils literal notranslate"><span class="pre">get_file()</span></code></a></li>
+<li><a class="reference internal" href="#misc.progressbar"><code class="docutils literal notranslate"><span class="pre">progressbar()</span></code></a></li>
+<li><a class="reference internal" href="#misc.save_file"><code class="docutils literal notranslate"><span class="pre">save_file()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="sounds.html"
-                        title="previous chapter">Sound Processing Utilities</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="sounds.html"
+                          title="previous chapter">Sound Processing Utilities</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -228,12 +234,12 @@ managers. Nifty coding!</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -250,13 +256,13 @@ managers. Nifty coding!</p>
         <li class="right" >
           <a href="sounds.html" title="Sound Processing Utilities"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.6 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">scikit-sound 0.2.11 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">misc</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+        &#169; Copyright 2023, thomas haslwanter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
     </div>
   </body>
 </html>

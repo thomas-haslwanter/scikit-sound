@@ -3,13 +3,13 @@
 
 Dependencies
 ------------
-numpy, scipy, easygui, json, appdirs, sounddevice
+numpy, scipy, json, appdirs, sounddevice
 
 Homepage
 --------
 http://work.thaslwanter.at/sksound/html/
 
-Copyright (c) 2022 Thomas Haslwanter <thomas.haslwanter@fh-linz.at>
+Copyright (c) 2023 Thomas Haslwanter <thomas.haslwanter@fh-ooe.at>
 
 '''
 
@@ -17,7 +17,7 @@ import importlib
 
 __author__ = "Thomas Haslwanter <thomas.haslwanter@fh-linz.at"
 __license__ = "BSD 2-Clause License"
-__version__ = "0.2.10"
+__version__ = "0.2.13"
 
 __all__ = ['misc', 'sounds']
 
