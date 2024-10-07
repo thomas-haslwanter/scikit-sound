@@ -1,16 +1,16 @@
 """ setup-file for scikit-sound """
 
 # author:   Thomas Haslwanter
-# date:     Dec-2023
+# date:     Feb-2024
 
 from setuptools import setup, find_packages
 import sys
 
 # Only need "pygame" on linux
-if sys.platform is 'linux':
+if sys.platform == 'linux':
     setup(
         name='scikit-sound',
-        version="0.2.13",
+        version="0.2.14",
         packages=find_packages(),
 
         include_package_data=True,
@@ -42,7 +42,7 @@ if sys.platform is 'linux':
 else:
     setup(
         name='scikit-sound',
-        version="0.2.13",
+        version="0.2.15",
         packages=find_packages(),
 
         include_package_data=True,

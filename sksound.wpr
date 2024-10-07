@@ -1,5 +1,5 @@
 #!wing
-#!version=9.0
+#!version=10.0
 ##################################################################
 # Wing project file                                              #
 ##################################################################
@@ -127,5 +127,6 @@ proj.directory-list = [{'dirloc': loc('docs'),
                         'recursive': True,
                         'watch_for_changes': True}]
 proj.file-type = 'shared'
-testing.auto-test-file-specs = (('glob',
-                                 'sksound/tests/test*.py'),)
+testing.auto-test-file-specs = (('regex',
+                                 'abc'),)
+testing.test-framework = {None: ':internal pytest'}

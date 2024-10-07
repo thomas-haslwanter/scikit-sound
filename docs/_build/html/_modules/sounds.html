@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sounds &#8212; scikit-sound 0.2.11 documentation</title>
+    <title>sounds &#8212; scikit-sound 0.2.14 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
     
@@ -24,7 +25,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.11 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.14 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
@@ -73,8 +74,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># Author: thomas haslwanter</span>
-<span class="c1"># Date:   April-2023</span>
-
+<span class="c1"># Date:   Dec-2023</span>
 
 <span class="c1"># &quot;ffmpeg&quot; has to be installed externally, into the location listed below</span>
 <span class="c1"># You can obtain it for free from http://ffmpeg.org</span>
@@ -99,7 +99,7 @@
 
 <span class="kn">import</span> <span class="nn">misc</span>
 
-<span class="kn">from</span> <span class="nn">sksound</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="c1"># from sksound import misc</span>
 
 <span class="c1"># On Win playing sound works automatically</span>
 <span class="c1"># For the other packages you need the module &quot;pygame&quot;</span>
@@ -275,19 +275,20 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inData</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inRate</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">inData</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inRate</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialize a Sound object &quot;&quot;&quot;</span>
 
         <span class="c1"># Information about FFMPEG</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg_info</span> <span class="o">=</span> <span class="n">FFMPEG_info</span><span class="p">()</span>
 
+        <span class="c1">#self.data = np.empty(0)</span>
         <span class="k">if</span> <span class="n">inData</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">inRate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Set the &quot;rate&quot; to the default value (8012 Hz).&#39;</span><span class="p">)</span>
                 <span class="n">rate</span> <span class="o">=</span> <span class="mf">8012.0</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">generate_sound</span><span class="p">(</span><span class="n">inData</span><span class="p">,</span> <span class="n">inRate</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">inFile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">inFile</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="n">inFile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_selectInput</span><span class="p">()</span>
                 <span class="k">if</span> <span class="n">inFile</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">return</span>
@@ -438,7 +439,7 @@
         <span class="k">except</span> <span class="ne">SystemError</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;If you don&#39;&#39;t have FFMPEG available, you can e.g. use installed audio-files. E.g.:&#39;</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;import subprocess&#39;</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;subprocess.run([r&quot;C:\Program Files (x86)\VideoLAN\VLC</span><span class="se">\v</span><span class="s1">lc.exe&quot;, r&quot;C:\Music</span><span class="se">\14</span><span class="s1">_Streets_of_Philadelphia.mp3&quot;])&#39;</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;subprocess.run([&quot;C:/Program Files (x86)/VideoLAN/VLC/vlc.exe&quot;, &quot;C:/Music/14_Streets_of_Philadelphia.mp3&quot;])&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Sound.generate_sound"><a class="viewcode-back" href="../sounds.html#sounds.Sound.generate_sound">[docs]</a>    <span class="k">def</span> <span class="nf">generate_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
@@ -589,7 +590,8 @@
             <span class="k">return</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">full_in_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">my_path</span><span class="p">,</span> <span class="n">my_file</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selection: &#39;</span> <span class="o">+</span> <span class="n">full_in_file</span><span class="p">)</span>
+            <span class="c1"># misc.get_file already shows the selection</span>
+            <span class="c1">#print(&#39;Selection: &#39; + full_in_file)</span>
             <span class="k">return</span> <span class="n">full_in_file</span></div>
 
 
@@ -648,6 +650,7 @@
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">my_sound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
+    <span class="n">my_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
     <span class="c1">#main()</span>
 
 </pre></div>
@@ -681,14 +684,14 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.11 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.14 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2023, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.0.1.
+        &#169; Copyright 2024, thomas haslwanter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
   </body>
 </html>

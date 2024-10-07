@@ -60,7 +60,7 @@ if file_dir not in sys.path:
 
 import misc
 
-from sksound import misc
+# from sksound import misc
 
 # On Win playing sound works automatically
 # For the other packages you need the module "pygame"
@@ -184,7 +184,7 @@ class Sound:
 
     Parameters
     ----------
-    inFile : string
+    inFile : string or pathlib-path
         path- and file-name of infile, if you get the sound from a file.
     inData: array
         manually generated sound data; requires "inRate" to be set, too.
@@ -254,7 +254,7 @@ class Sound:
                 if inFile == 0:
                     return
             try:
-                self.source = inFile
+                self.source = str(inFile)
                 self.read_sound(self.source)
             except FileNotFoundError as err:
                 print(err)
@@ -400,7 +400,7 @@ class Sound:
         except SystemError:
             print('If you don''t have FFMPEG available, you can e.g. use installed audio-files. E.g.:')
             print('import subprocess')
-            print('subprocess.run([r"C:\Program Files (x86)\VideoLAN\VLC\vlc.exe", r"C:\Music\14_Streets_of_Philadelphia.mp3"])')
+            print('subprocess.run(["C:/Program Files (x86)/VideoLAN/VLC/vlc.exe", "C:/Music/14_Streets_of_Philadelphia.mp3"])')
 
 
     def generate_sound(self, data, rate):
