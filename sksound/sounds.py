@@ -35,7 +35,7 @@ Compatible with Python >=3.5
 """
 
 # Author: thomas haslwanter
-# Date:   Dec-2023
+# Date:   Oct-2024
 
 # "ffmpeg" has to be installed externally, into the location listed below
 # You can obtain it for free from http://ffmpeg.org
@@ -49,6 +49,7 @@ import json
 import time
 
 import appdirs
+import yaml
 
 # The following construct is required since I want to run the module as a script
 # inside the sksound-directory
@@ -515,7 +516,6 @@ class Sound:
 
         """
 
-        import yaml
 
         (source, rate, numChannels, totalSamples, duration, dataType) = self.get_info()
         info = {'Source':source,

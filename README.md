@@ -1,3 +1,4 @@
+![Title](docs/Images/scikit_sound.png)
 ============
 scikit-sound
 ============
@@ -6,30 +7,28 @@ scikit-sound
 
 Dependencies
 ------------
+
 numpy, scipy
 
 Homepage
 --------
-http://work.thaslwanter.at/sksound/html/
 
-:Author:  Thomas Haslwanter
-:Date:    Oct-07-2024
-:Ver:     0.2.15
-:Licence: BSD 2-Clause License (http://opensource.org/licenses/BSD-2-Clause)
-:Copyright:
-    |copy| 2024, Thomas Haslwanter, all rights reserved.
+<http://work.thaslwanter.at/sksound/html/>
 
-.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
+Author: Thomas Haslwanter Date: 08-10-2024 Ver: 0.3.0 Licence: BSD
+2-Clause License (<http://opensource.org/licenses/BSD-2-Clause>)
+Copyright (c) 2024, Thomas Haslwanter All rights reserved.
 
 Installation
 ------------
+
 You can install scikit-sound with
 
-    pip install scikit-sound
+> pip install scikit-sound
 
 and upgrade to a new version with
 
-    pip install scikit-sound -U
+> pip install scikit-sound -U
 
 Sound Processing Utilities
 ==========================

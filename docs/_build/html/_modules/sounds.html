@@ -1,22 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sounds &#8212; scikit-sound 0.2.14 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <title>sounds &#8212; scikit-sound 0.3.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=808026b9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=e259d695"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -25,7 +24,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.14 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
@@ -74,7 +73,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># Author: thomas haslwanter</span>
-<span class="c1"># Date:   Dec-2023</span>
+<span class="c1"># Date:   Oct-2024</span>
 
 <span class="c1"># &quot;ffmpeg&quot; has to be installed externally, into the location listed below</span>
 <span class="c1"># You can obtain it for free from http://ffmpeg.org</span>
@@ -88,6 +87,7 @@
 <span class="kn">import</span> <span class="nn">time</span>
 
 <span class="kn">import</span> <span class="nn">appdirs</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
 
 <span class="c1"># The following construct is required since I want to run the module as a script</span>
 <span class="c1"># inside the sksound-directory</span>
@@ -110,11 +110,16 @@
     <span class="kn">import</span> <span class="nn">pygame</span>
 
 
-<div class="viewcode-block" id="NoFFMPEG_Error"><a class="viewcode-back" href="../sounds.html#sounds.NoFFMPEG_Error">[docs]</a><span class="k">class</span> <span class="nc">NoFFMPEG_Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<div class="viewcode-block" id="NoFFMPEG_Error">
+<a class="viewcode-back" href="../sounds.html#sounds.NoFFMPEG_Error">[docs]</a>
+<span class="k">class</span> <span class="nc">NoFFMPEG_Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="FFMPEG_info"><a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info">[docs]</a><span class="k">class</span> <span class="nc">FFMPEG_info</span><span class="p">:</span>
+
+<div class="viewcode-block" id="FFMPEG_info">
+<a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info">[docs]</a>
+<span class="k">class</span> <span class="nc">FFMPEG_info</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Class for storing the config-info for FFMPEG.</span>
@@ -163,7 +168,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;ffplay&#39;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="FFMPEG_info.set"><a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info.set">[docs]</a>    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="FFMPEG_info.set">
+<a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info.set">[docs]</a>
+    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the config-filename, and write the FFMPEG_info</span>
 <span class="sd">        properties &quot;ffmpeg&quot; and &quot;ffplay&quot; to that config-file.</span>
@@ -207,10 +214,14 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current directory: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">curDir</span><span class="p">))</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
 
-        <span class="k">return</span></div></div>
+        <span class="k">return</span></div>
+</div>
 
 
-<div class="viewcode-block" id="Sound"><a class="viewcode-back" href="../sounds.html#sounds.Sound">[docs]</a><span class="k">class</span> <span class="nc">Sound</span><span class="p">:</span>
+
+<div class="viewcode-block" id="Sound">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound">[docs]</a>
+<span class="k">class</span> <span class="nc">Sound</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Class for working with sound in Python.</span>
@@ -223,7 +234,7 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    inFile : string</span>
+<span class="sd">    inFile : string or pathlib-path</span>
 <span class="sd">        path- and file-name of infile, if you get the sound from a file.</span>
 <span class="sd">    inData: array</span>
 <span class="sd">        manually generated sound data; requires &quot;inRate&quot; to be set, too.</span>
@@ -293,7 +304,7 @@
                 <span class="k">if</span> <span class="n">inFile</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="k">return</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="n">inFile</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">source</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">inFile</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
             <span class="k">except</span> <span class="ne">FileNotFoundError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -302,7 +313,9 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">source</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="Sound.read_sound"><a class="viewcode-back" href="../sounds.html#sounds.Sound.read_sound">[docs]</a>    <span class="k">def</span> <span class="nf">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">):</span>
+<div class="viewcode-block" id="Sound.read_sound">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound.read_sound">[docs]</a>
+    <span class="k">def</span> <span class="nf">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Read data from a sound-file.</span>
@@ -368,7 +381,10 @@
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;data read in!&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Sound.play"><a class="viewcode-back" href="../sounds.html#sounds.Sound.play">[docs]</a>    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Sound.play">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound.play">[docs]</a>
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       Play the stored sound</span>
 
@@ -442,7 +458,10 @@
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;subprocess.run([&quot;C:/Program Files (x86)/VideoLAN/VLC/vlc.exe&quot;, &quot;C:/Music/14_Streets_of_Philadelphia.mp3&quot;])&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Sound.generate_sound"><a class="viewcode-back" href="../sounds.html#sounds.Sound.generate_sound">[docs]</a>    <span class="k">def</span> <span class="nf">generate_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Sound.generate_sound">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound.generate_sound">[docs]</a>
+    <span class="k">def</span> <span class="nf">generate_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Set the properties of a Sound-object. &quot;&quot;&quot;</span>
 
         <span class="c1"># If the data are not in an integer format (if they are e.g. &quot;float&quot;), convert</span>
@@ -458,7 +477,10 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_setInfo</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="Sound.write_wav"><a class="viewcode-back" href="../sounds.html#sounds.Sound.write_wav">[docs]</a>    <span class="k">def</span> <span class="nf">write_wav</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Sound.write_wav">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound.write_wav">[docs]</a>
+    <span class="k">def</span> <span class="nf">write_wav</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">full_out_file</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Write sound data to a WAV-file.</span>
@@ -501,7 +523,10 @@
         <span class="k">return</span> <span class="n">full_out_file</span></div>
 
 
-<div class="viewcode-block" id="Sound.get_info"><a class="viewcode-back" href="../sounds.html#sounds.Sound.get_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Sound.get_info">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound.get_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return information about the sound.</span>
 
@@ -534,7 +559,10 @@
                 <span class="bp">self</span><span class="o">.</span><span class="n">dataType</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="Sound.summary"><a class="viewcode-back" href="../sounds.html#sounds.Sound.summary">[docs]</a>    <span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Sound.summary">
+<a class="viewcode-back" href="../sounds.html#sounds.Sound.summary">[docs]</a>
+    <span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Display information about the sound.</span>
 
@@ -554,7 +582,6 @@
 
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="kn">import</span> <span class="nn">yaml</span>
 
         <span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">numChannels</span><span class="p">,</span> <span class="n">totalSamples</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dataType</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_info</span><span class="p">()</span>
         <span class="n">info</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Source&#39;</span><span class="p">:</span><span class="n">source</span><span class="p">,</span>
@@ -564,6 +591,7 @@
                 <span class="s1">&#39;Duration&#39;</span><span class="p">:</span><span class="n">duration</span><span class="p">,</span>
                 <span class="s1">&#39;DataType&#39;</span><span class="p">:</span><span class="n">dataType</span><span class="p">}</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="n">default_flow_style</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span></div>
+
 
 
     <span class="k">def</span> <span class="nf">_setInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -595,7 +623,10 @@
             <span class="k">return</span> <span class="n">full_in_file</span></div>
 
 
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../sounds.html#sounds.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../sounds.html#sounds.main">[docs]</a>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Main function, to test the module &quot;&quot;&quot;</span>
 
     <span class="kn">import</span> <span class="nn">os</span>
@@ -648,6 +679,7 @@
     <span class="n">in_sound</span><span class="o">.</span><span class="n">write_wav</span><span class="p">()</span></div>
 
 
+
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">my_sound</span> <span class="o">=</span> <span class="n">Sound</span><span class="p">()</span>
     <span class="n">my_sound</span><span class="o">.</span><span class="n">play</span><span class="p">()</span>
@@ -659,9 +691,9 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -669,13 +701,13 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -684,14 +716,14 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.14 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2024, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    &#169; Copyright 2024, thomas haslwanter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
     </div>
   </body>
 </html>
