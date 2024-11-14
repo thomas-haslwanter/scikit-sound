@@ -42,11 +42,12 @@ Compatible with Python >=3.5
 
 import numpy as np
 
-from scipy.io.wavfile import read, write
+from scipy.io import wavfile
 import tempfile
 import subprocess
 import json
 import time
+from pathlib import Path
 
 import appdirs
 import yaml
@@ -139,12 +140,13 @@ class FFMPEG_info:
         if ffmpeg_installed:
             ffmpeg_dir = misc.get_dir(DialogTitle='Please select the directory where FFMPEG (binary) is installed:')
 
+
             if sys.platform=='win32':
-                self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg.exe')
-                self.ffplay = os.path.join(ffmpeg_dir, 'ffplay.exe')
+                self.ffmpeg = ffmpeg_dir/'ffmpeg.exe'
+                self.ffplay = ffmpeg_dir/'ffplay.exe'
             else:
-                self.ffmpeg = os.path.join(ffmpeg_dir, 'ffmpeg')
-                self.ffplay = os.path.join(ffmpeg_dir, 'ffplay')
+                self.ffmpeg = ffmpeg_dir/'ffmpeg'
+                self.ffplay = ffmpeg_dir/'ffplay'
 
             if not os.path.exists(self.ffmpeg):
                 print('Sorry, {0} does not exist!'.format(self.ffmpeg))
@@ -237,7 +239,8 @@ class Sound:
 
     """
 
-    def __init__(self, inFile: str = '', inData: np.ndarray = None, inRate: float = None):
+    def __init__(self, inFile: str|os.PathLike = '', inData: np.ndarray|None = None, inRate:
+                 float|None = None):
         """ Initialize a Sound object """
 
         # Information about FFMPEG
@@ -314,7 +317,7 @@ class Sound:
             inFile = outFile
             self.source = outFile
 
-        self.rate, self.data = read(inFile)
+        self.rate, self.data = wavfile.read(inFile)
 
         # Set the filename
         self.source = inFile
@@ -360,7 +363,7 @@ class Sound:
                 # If there is no source-file, write the data to a temporary WAV-file ...
                 tmpFile = tempfile.NamedTemporaryFile(suffix='.wav', delete=False)
                 tmpFile.close()
-                self.write_wav(tmpFile.name)
+                self.write_wav(Path(tmpFile.name))
 
                 # ... and play that file
                 if sys.platform=='win32':
@@ -380,7 +383,7 @@ class Sound:
 
             elif os.path.exists(self.source):
                 # If you have a given input file ...
-                print('Playing ' + self.source)
+                print('Playing ' + str(self.source))
 
                 # ... then play that one
                 if sys.platform == 'win32':
@@ -420,21 +423,20 @@ class Sound:
         self._setInfo()
 
 
-    def write_wav(self, full_out_file = None):
+    def write_wav(self, out_file:os.PathLike|None = None) -> os.PathLike|None:
         """
 
         Write sound data to a WAV-file.
 
         Parameters
         ----------
-        fullOutFile : string
-            Path- and file-name of the outfile. If none is given,
+        out_file : path of the outfile. If none is given,
             the user is asked interactively to choose a folder/name
             for the outfile.
 
         Returns
         -------
-        None :
+        out_file : path of the (selected) outfile
 
 
         Examples
@@ -444,23 +446,19 @@ class Sound:
 
         """
 
-        if full_out_file is None:
+        if out_file is None:
 
-            (out_file, out_dir) = misc.save_file(FilterSpec='*.wav', DialogTitle='Write sound to ...',
-                          DefaultName='')
-            full_out_file = os.path.join(out_dir, out_file)
-            if full_out_file is None:
+            out_file = misc.save_file(filter_spec='*.wav', dialog_title='Write sound to ...',
+                          default_name='')
+            if out_file is None:
                 print('Output discarded.')
-                return 0
-        else:
-            full_out_file = os.path.abspath(full_out_file)
-            (out_dir , out_file) = os.path.split(full_out_file)
+                return None
 
-        write(str(full_out_file), int(self.rate), self.data)
-        print('Sounddata written to ' + out_file + ', with a sample rate of ' + str(self.rate))
-        print('OutDir: ' + out_dir)
+        wavfile.write(str(out_file.absolute()), int(self.rate), self.data)
+        print(f'Sounddata written to {out_file.name}, with a sample rate of {str(self.rate)}')
+        print(f'OutDir: {out_file.parent}')
 
-        return full_out_file
+        return out_file
 
 
     def get_info(self):
@@ -540,20 +538,19 @@ class Sound:
         self.duration = float(self.totalSamples)/self.rate # [sec]
         self.dataType = str(self.data.dtype)
 
-    def _selectInput(self):
+    def _selectInput(self) -> str | os.PathLike:
         """ GUI for the selection of an in-file. """
 
-        (my_file, my_path) = misc.get_file(FilterSpec='*.wav',
-                                    DialogTitle='Select sound-input:',
-                                    DefaultName='')
-        if my_path == 0:
+        my_file = misc.get_file(filter_spec='*.wav',
+                                    dialog_title='Select sound-input:',
+                                    default_name='')
+        if my_file is None:
             print('No file selected')
-            return 0
+            return ''
         else:
-            full_in_file = os.path.join(my_path, my_file)
             # misc.get_file already shows the selection
             #print('Selection: ' + full_in_file)
-            return full_in_file
+            return my_file
 
 
 def main():
@@ -610,7 +607,7 @@ def main():
 
 
 if __name__ == '__main__':
-    my_sound = Sound()
-    my_sound.play()
-    #main()
+    # my_sound = Sound()
+    # my_sound.play()
+    main()
 
