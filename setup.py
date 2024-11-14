@@ -1,7 +1,7 @@
 """ setup-file for scikit-sound """
 
 # author:   Thomas Haslwanter
-# date:     Feb-2024
+# date:     Nov-2024
 
 from setuptools import setup, find_packages
 import sys
@@ -10,7 +10,7 @@ import sys
 if sys.platform == 'linux':
     setup(
         name='scikit-sound',
-        version="0.2.15",
+        version="0.3.1",
         packages=find_packages(),
 
         include_package_data=True,
@@ -42,7 +42,7 @@ if sys.platform == 'linux':
 else:
     setup(
         name='scikit-sound',
-        version="0.2.15",
+        version="0.3.1",
         packages=find_packages(),
 
         include_package_data=True,

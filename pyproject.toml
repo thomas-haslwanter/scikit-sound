@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "scikit-sound"
-version = "0.3.0"
+version = "0.3.1"
 description  = "Python utilites for working with sound signals"
 authors = ["Thomas Haslwanter <thomas.haslwanter@fh-ooe.at>"]
 readme = "README.md"

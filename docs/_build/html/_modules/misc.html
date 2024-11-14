@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>misc &#8212; scikit-sound 0.2.14 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css" />
+    <title>misc &#8212; scikit-sound 0.3.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=9936e48f" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/documentation_options.js?v=e259d695"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -25,7 +24,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.14 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">misc</a></li> 
       </ul>
@@ -41,13 +40,14 @@
 <span class="sd">Miscellaneous user interface utilities for</span>
 
 <span class="sd">    - selecting files or directories.</span>
-<span class="sd">      If nothing or a non-existing file/direcoty is selected, the return is &quot;0&quot;. </span>
-<span class="sd">      Otherwise the file/directory is returned.</span>
+<span class="sd">      If nothing or a non-existing file/direcoty is selected, the return is</span>
+<span class="sd">      &quot;None&quot;. Otherwise the file/directory is returned.</span>
 <span class="sd">    - waitbar</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1"># author: Thomas Haslwanter; date: April-2021</span>
+<span class="c1"># author: Thomas Haslwanter</span>
+<span class="c1"># date: Nov-2024</span>
 
 
 <span class="kn">import</span> <span class="nn">os</span>
@@ -56,25 +56,27 @@
 
 <span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">import</span> <span class="nn">tkinter</span> 
+<span class="kn">import</span> <span class="nn">tkinter</span>
 <span class="kn">import</span> <span class="nn">tkinter.filedialog</span> <span class="k">as</span> <span class="nn">tkf</span>
 <span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="n">messagebox</span>
-    
-    
-<div class="viewcode-block" id="progressbar"><a class="viewcode-back" href="../misc.html#misc.progressbar">[docs]</a><span class="k">def</span> <span class="nf">progressbar</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">60</span><span class="p">):</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Generator</span>
+
+
+<div class="viewcode-block" id="progressbar">
+<a class="viewcode-back" href="../misc.html#misc.progressbar">[docs]</a>
+<span class="k">def</span> <span class="nf">progressbar</span><span class="p">(</span><span class="n">it</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">|</span><span class="nb">range</span><span class="p">,</span> <span class="n">prefix</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">Generator</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Shows a progress-bar on the commandline.</span>
 <span class="sd">    This has the advantage that you don&#39;t need to bother with windows</span>
 <span class="sd">    managers. Nifty coding!</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    it : integer array</span>
-<span class="sd">        index variable</span>
-<span class="sd">    prefix : string</span>
-<span class="sd">        Text preceding the progress-bar</span>
-<span class="sd">    size : integer</span>
-<span class="sd">        Length of progress-bar</span>
+<span class="sd">    it : index variable (integer)</span>
+<span class="sd">    prefix : Text preceding the progress-bar</span>
+<span class="sd">    size : Length of progress-bar</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -82,221 +84,212 @@
 <span class="sd">    &gt;&gt;&gt; for ii in progressbar(range(50), &#39;Computing &#39;, 25):</span>
 <span class="sd">    &gt;&gt;&gt;    #print(ii)</span>
 <span class="sd">    &gt;&gt;&gt;    time.sleep(0.05)</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
-    
+
     <span class="k">def</span> <span class="nf">_show</span><span class="p">(</span><span class="n">_i</span><span class="p">):</span>
         <span class="c1"># Helper function to print the desired information line.</span>
 
         <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="o">*</span><span class="n">_i</span><span class="o">/</span><span class="n">count</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">[</span><span class="si">%s%s</span><span class="s2">] </span><span class="si">%i</span><span class="s2">/</span><span class="si">%i</span><span class="se">\r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="o">*</span><span class="p">(</span><span class="n">size</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="n">_i</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">[</span><span class="si">%s%s</span><span class="s2">] </span><span class="si">%i</span><span class="s2">/</span><span class="si">%i</span><span class="se">\r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prefix</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="o">*</span><span class="p">(</span><span class="n">size</span><span class="o">-</span><span class="n">x</span><span class="p">),</span>
+                                               <span class="n">_i</span><span class="p">,</span> <span class="n">count</span><span class="p">))</span>
 <span class="c1">#        sys.stdout.flush()</span>
-    
+
     <span class="n">_show</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
         <span class="k">yield</span> <span class="n">item</span>
         <span class="n">_show</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span></div>
-    
-    
-<div class="viewcode-block" id="get_file"><a class="viewcode-back" href="../misc.html#misc.get_file">[docs]</a><span class="k">def</span> <span class="nf">get_file</span><span class="p">(</span><span class="n">FilterSpec</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;Select File: &#39;</span><span class="p">,</span> <span class="n">DefaultName</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+
+
+
+<div class="viewcode-block" id="get_file">
+<a class="viewcode-back" href="../misc.html#misc.get_file">[docs]</a>
+<span class="k">def</span> <span class="nf">get_file</span><span class="p">(</span><span class="n">filter_spec</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">dialog_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Select File: &#39;</span><span class="p">,</span>
+             <span class="n">default_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span><span class="o">|</span><span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Selecting an existing file.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    FilterSpec : query-string</span>
-<span class="sd">        File filters</span>
-<span class="sd">    DialogTitle : string</span>
-<span class="sd">        Window title</span>
-<span class="sd">    DefaultName : string</span>
-<span class="sd">        Can be a directory AND filename</span>
-<span class="sd">    </span>
+<span class="sd">    filter_spec: File filters</span>
+<span class="sd">    dialog_title: Window title</span>
+<span class="sd">    default_name: Can be a directory AND filename</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    filename :  string</span>
-<span class="sd">        selected existing file</span>
-<span class="sd">    pathname:   string</span>
-<span class="sd">        selected path</span>
-<span class="sd">    </span>
+<span class="sd">    filename :  selected existing file (partent + name)</span>
+<span class="sd">                If no file is selected, &#39;None&#39; is returned</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; (myFile, myPath) = skinematics.ui.getfile(&#39;*.py&#39;, &#39;Testing file-selection&#39;, &#39;c:\\temp\\test.py&#39;)</span>
-<span class="sd">    </span>
+<span class="sd">    &gt;&gt;&gt; my_file = skinematics.ui.getfile(&#39;*.py&#39;, &#39;Testing file-selection&#39;, &#39;c:\\temp\\test.py&#39;)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-topmost&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">fullInFile</span> <span class="o">=</span> <span class="n">tkf</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">initialfile</span><span class="o">=</span><span class="n">DefaultName</span><span class="p">,</span>
-            <span class="n">title</span><span class="o">=</span><span class="n">DialogTitle</span><span class="p">,</span> <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;all files&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Select&#39;</span><span class="p">,</span>
-                <span class="n">FilterSpec</span><span class="p">)])</span>
-    
+    <span class="n">selected_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tkf</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span><span class="n">initialfile</span><span class="o">=</span><span class="n">default_name</span><span class="p">,</span>
+            <span class="n">title</span><span class="o">=</span><span class="n">dialog_title</span><span class="p">,</span> <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;all files&#39;</span><span class="p">,</span><span class="s1">&#39;*&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Select&#39;</span><span class="p">,</span>
+                <span class="n">filter_spec</span><span class="p">)]))</span>
+
     <span class="c1"># Close the Tk-window manager again</span>
     <span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fullInFile</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">selected_file</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selection: &#39;</span> <span class="o">+</span> <span class="n">fullInFile</span><span class="p">)</span>
-        <span class="n">dirName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fullInFile</span><span class="p">)</span>
-        <span class="n">fileName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">fullInFile</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">dirName</span><span class="p">)</span></div>
-        
-    
-<div class="viewcode-block" id="save_file"><a class="viewcode-back" href="../misc.html#misc.save_file">[docs]</a><span class="k">def</span> <span class="nf">save_file</span><span class="p">(</span><span class="n">FilterSpec</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span><span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;Save File: &#39;</span><span class="p">,</span> <span class="n">DefaultName</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">selected_file</span></div>
+
+
+
+<div class="viewcode-block" id="save_file">
+<a class="viewcode-back" href="../misc.html#misc.save_file">[docs]</a>
+<span class="k">def</span> <span class="nf">save_file</span><span class="p">(</span><span class="n">filter_spec</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">dialog_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Save File: &#39;</span><span class="p">,</span>
+              <span class="n">default_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Selecting an existing or new file:</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    FilterSpec : string</span>
+<span class="sd">    filter_spec : string</span>
 <span class="sd">        File filters.</span>
-<span class="sd">    DialogTitle : string</span>
+<span class="sd">    dialog_title : string</span>
 <span class="sd">        Window title.</span>
-<span class="sd">    DefaultName : string</span>
+<span class="sd">    default_name : string</span>
 <span class="sd">        Can be a directory AND filename.</span>
-<span class="sd">    </span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    filename : string</span>
-<span class="sd">        Selected file.</span>
-<span class="sd">    pathname : string</span>
-<span class="sd">        Selecte path.</span>
-<span class="sd">    </span>
+<span class="sd">    selected_file : Selected file (parent + name)</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; (myFile, myPath) = skinematics.ui.savefile(&#39;*.py&#39;, &#39;Testing file-selection&#39;, &#39;c:\\temp\\test.py&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; selected_file = skinematics.ui.savefile(&#39;*.py&#39;, &#39;Testing file-selection&#39;, &#39;c:\\temp\\test.py&#39;)</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-topmost&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">outFile</span> <span class="o">=</span> <span class="n">tkf</span><span class="o">.</span><span class="n">asksaveasfile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">DialogTitle</span><span class="p">,</span> <span class="n">initialfile</span><span class="o">=</span><span class="n">DefaultName</span><span class="p">,</span> <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Save as&#39;</span><span class="p">,</span> <span class="n">FilterSpec</span><span class="p">)])</span>
-    
+    <span class="n">selected_file</span> <span class="o">=</span> <span class="n">tkf</span><span class="o">.</span><span class="n">asksaveasfile</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span>
+                                <span class="n">title</span><span class="o">=</span><span class="n">dialog_title</span><span class="p">,</span>
+                                <span class="n">initialfile</span><span class="o">=</span><span class="n">default_name</span><span class="p">,</span>
+                                <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Save as&#39;</span><span class="p">,</span> <span class="n">filter_spec</span><span class="p">)])</span>
+
     <span class="c1"># Close the Tk-window manager again</span>
     <span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="n">outFile</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">dirName</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">fullOutFile</span> <span class="o">=</span> <span class="n">outFile</span><span class="o">.</span><span class="n">name</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selection: &#39;</span> <span class="o">+</span> <span class="n">fullOutFile</span><span class="p">)</span>
-        <span class="n">dirName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">fullOutFile</span><span class="p">)</span>
-        <span class="n">fileName</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">fullOutFile</span><span class="p">)</span>
-        
-    <span class="k">return</span> <span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">dirName</span><span class="p">)</span></div>
+
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">selected_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_dir"><a class="viewcode-back" href="../misc.html#misc.get_dir">[docs]</a><span class="k">def</span> <span class="nf">get_dir</span><span class="p">(</span><span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;Select Directory&#39;</span><span class="p">,</span> <span class="n">DefaultName</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+
+<div class="viewcode-block" id="get_dir">
+<a class="viewcode-back" href="../misc.html#misc.get_dir">[docs]</a>
+<span class="k">def</span> <span class="nf">get_dir</span><span class="p">(</span><span class="n">dialog_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Select Directory&#39;</span><span class="p">,</span>
+            <span class="n">default_name</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Select a directory</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    DialogTitle : string</span>
-<span class="sd">        Window title</span>
-<span class="sd">    DefaultName : string</span>
-<span class="sd">        Can be a directory AND filename</span>
+<span class="sd">    dialog_title : Window title</span>
+<span class="sd">    default_name : Can be a directory AND filename</span>
 
-<span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    directory : string</span>
-<span class="sd">        Selected directory.</span>
+<span class="sd">    directory : Selected directory</span>
 
-<span class="sd">    </span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; myDir = skinematics.ui.getdir(&#39;c:\\temp&#39;, &#39;Pick your directory&#39;)</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-topmost&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-    <span class="n">fullDir</span> <span class="o">=</span> <span class="n">tkf</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">initialdir</span><span class="o">=</span><span class="n">DefaultName</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">DialogTitle</span><span class="p">)</span>
-    
+    <span class="n">directory</span> <span class="o">=</span> <span class="n">tkf</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span><span class="n">initialdir</span><span class="o">=</span><span class="n">default_name</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">dialog_title</span><span class="p">)</span>
+
     <span class="c1"># Close the Tk-window manager again</span>
     <span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-    
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">fullDir</span><span class="p">):</span>
-        <span class="k">return</span> <span class="mi">0</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selection: &#39;</span> <span class="o">+</span> <span class="n">fullDir</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fullDir</span></div>
 
-    
-<div class="viewcode-block" id="askquestion"><a class="viewcode-back" href="../misc.html#misc.askquestion">[docs]</a><span class="k">def</span> <span class="nf">askquestion</span> <span class="p">(</span><span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;Interactive Selection&#39;</span><span class="p">,</span> <span class="n">Question</span><span class="o">=</span><span class="s1">&#39;Are we done yet?&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="askquestion">
+<a class="viewcode-back" href="../misc.html#misc.askquestion">[docs]</a>
+<span class="k">def</span> <span class="nf">askquestion</span> <span class="p">(</span><span class="n">dialog_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Interactive Selection&#39;</span><span class="p">,</span>
+                 <span class="n">Question</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;Are we done yet?&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Ask the user a yes/no question</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    DialogTitle : string</span>
-<span class="sd">        Window title</span>
-<span class="sd">    Question : string</span>
-<span class="sd">        Question to the user</span>
+<span class="sd">    dialog_title : Window title</span>
+<span class="sd">    Question : Question to the user</span>
 
-<span class="sd">    </span>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    yes_no : boolean</span>
-<span class="sd">        Selected answer.</span>
+<span class="sd">    yes_no : Selected answer</span>
 
-<span class="sd">    </span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; my_wish = sksound.misc.askquestion(&#39;Work or Play&#39;, &#39;Do you want to go home?&#39;)</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
-    
+
     <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
     <span class="n">root</span><span class="o">.</span><span class="n">withdraw</span><span class="p">()</span>
-    
+
     <span class="c1"># On some systems, this dialog remains in the back</span>
     <span class="c1"># To overcome that, move it up. Unfortunately, this somehow also makes the</span>
     <span class="c1"># &quot;root&quot; visible again :(</span>
     <span class="c1"># To be fixed sometime ...</span>
     <span class="n">to_top</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Toplevel</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
-    <span class="n">yes_no</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">DialogTitle</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">Question</span><span class="p">,</span> <span class="n">master</span><span class="o">=</span><span class="n">to_top</span><span class="p">)</span>
-    
+    <span class="n">yes_no</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">dialog_title</span><span class="p">,</span>
+                                 <span class="n">message</span><span class="o">=</span><span class="n">Question</span><span class="p">,</span> <span class="n">master</span><span class="o">=</span><span class="n">to_top</span><span class="p">)</span>
+
     <span class="c1"># Close the Tk-window manager again</span>
     <span class="n">root</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
-    
+
     <span class="k">return</span> <span class="n">yes_no</span></div>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>   
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="c1"># Test functions</span>
-<span class="w">    </span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">askquestion</span><span class="p">(</span><span class="n">dialog_title</span><span class="o">=</span><span class="s1">&#39;Interactive choice&#39;</span><span class="p">,</span>
+                        <span class="n">Question</span><span class="o">=</span><span class="s1">&#39;Are we done yet?&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You have selected </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+
+
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">progressbar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;Computing &#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
+        <span class="c1">#print(ii)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+
+
+    <span class="n">selected_get</span> <span class="o">=</span> <span class="n">get_file</span><span class="p">(</span><span class="s1">&#39;*.eps&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\test.eps&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">selected_get</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No file selected&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">selected_get</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Path: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">selected_get</span><span class="o">.</span><span class="n">parent</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">selected_save</span> <span class="o">=</span> <span class="n">save_file</span><span class="p">(</span><span class="s1">&#39;*.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing saving-selection&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;c:\temp\test.txt&#39;</span><span class="p">)</span>
+
+    <span class="n">my_dir</span> <span class="o">=</span> <span class="n">get_dir</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Folder: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">my_dir</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    result = askquestion(DialogTitle=&#39;Interactive choice&#39;, </span>
-<span class="sd">                        Question=&#39;Are we done yet?&#39;)</span>
-<span class="sd">    print(&#39;You have selected {0}&#39;.format(result))</span>
-<span class="sd">    </span>
-<span class="sd">    </span>
-<span class="sd">    import time</span>
-<span class="sd">    for ii in progressbar(range(50), &#39;Computing &#39;, 25):</span>
-<span class="sd">        #print(ii)</span>
-<span class="sd">        time.sleep(0.05)</span>
-<span class="sd">        </span>
 
-<span class="sd">    (myFile, myPath) = get_file(&#39;*.eps&#39;, &#39;Testing file-selection&#39;, r&#39;c:\temp\test.eps&#39;)</span>
-<span class="sd">    if myFile == 0:          </span>
-<span class="sd">        print(0)</span>
-<span class="sd">    else:</span>
-<span class="sd">        print(&#39;File: %s, Path: %s&#39; % (myFile, myPath))</span>
-<span class="sd">    (myFile, myPath) = save_file(&#39;*.txt&#39;, &#39;Testing saving-selection&#39;, r&#39;c:\temp\test.txt&#39;)</span>
-<span class="sd">        </span>
-<span class="sd">    myDir = get_dir()</span>
-<span class="sd">    print(myDir)</span>
-
-<span class="sd">    </span>
 <span class="sd">    root = tkinter.Tk()</span>
 <span class="sd">    app = Demo1(root, sys._getframe())</span>
 <span class="sd">    root.mainloop()</span>
@@ -333,14 +326,14 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.2.14 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">misc</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2024, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+    &#169; Copyright 2024, thomas haslwanter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

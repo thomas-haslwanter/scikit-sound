@@ -7,10 +7,10 @@
 
     <title>Sound Processing Utilities &#8212; scikit-sound 0.3.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=808026b9" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=9936e48f" />
     
     <script src="_static/documentation_options.js?v=e259d695"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -18,7 +18,7 @@
     <link rel="next" title="misc" href="misc.html" />
     <link rel="prev" title="scikit-sound - Documentation" href="index.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="Related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -77,7 +77,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#sounds.Sound.summary" title="sounds.Sound.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.summary</span></code></a>()</p></td>
 <td><p>Display information about the sound.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sounds.Sound.write_wav" title="sounds.Sound.write_wav"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.write_wav</span></code></a>([full_out_file])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sounds.Sound.write_wav" title="sounds.Sound.write_wav"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sounds.Sound.write_wav</span></code></a>([out_file])</p></td>
 <td><p>Write sound data to a WAV-file.</p></td>
 </tr>
 </tbody>
@@ -170,7 +170,7 @@ properties “ffmpeg” and “ffplay” to that config-file.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sounds.Sound">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sounds.</span></span><span class="sig-name descname"><span class="pre">Sound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inData</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inRate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sounds.Sound" title="Link to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sounds.</span></span><span class="sig-name descname"><span class="pre">Sound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inFile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">PathLike</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inData</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inRate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sounds.Sound" title="Link to this definition">¶</a></dt>
 <dd><p>Class for working with sound in Python.</p>
 <dl class="simple">
 <dt>A Sound object can be initialized</dt><dd><ul class="simple">
@@ -248,7 +248,7 @@ unintentional deletion of existing WAV-files.</p>
 <dd><p>Return information about the sound.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong></p>
+<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -276,7 +276,7 @@ unintentional deletion of existing WAV-files.</p>
 <dd><p>Play the stored sound</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong></p>
+<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -327,7 +327,7 @@ FFMPEG, and then read in.</p></li>
 <dd><p>Display information about the sound.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>None</strong></p>
+<dd class="field-odd"><p><strong>None</strong> – </p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>None</p>
@@ -343,16 +343,18 @@ FFMPEG, and then read in.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sounds.Sound.write_wav">
-<span class="sig-name descname"><span class="pre">write_wav</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">full_out_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sounds.html#Sound.write_wav"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sounds.Sound.write_wav" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">write_wav</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/sounds.html#Sound.write_wav"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sounds.Sound.write_wav" title="Link to this definition">¶</a></dt>
 <dd><p>Write sound data to a WAV-file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>fullOutFile</strong> (<em>string</em>) – Path- and file-name of the outfile. If none is given,
-the user is asked interactively to choose a folder/name
+<dd class="field-odd"><p><strong>out_file</strong> (<em>path</em><em> of </em><em>the outfile. If none is given</em><em>,</em>) – the user is asked interactively to choose a folder/name
 for the outfile.</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>None</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>out_file</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>path of the (selected) outfile</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -378,7 +380,7 @@ for the outfile.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -429,7 +431,7 @@ for the outfile.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<search id="searchbox" style="display: none" role="search">
+<div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -437,13 +439,13 @@ for the outfile.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</search>
+</div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="Related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -464,7 +466,7 @@ for the outfile.</p>
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2024, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

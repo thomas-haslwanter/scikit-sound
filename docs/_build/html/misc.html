@@ -7,17 +7,17 @@
 
     <title>misc &#8212; scikit-sound 0.3.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=808026b9" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css?v=9936e48f" />
     
     <script src="_static/documentation_options.js?v=e259d695"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Sound Processing Utilities" href="sounds.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="Related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -61,27 +61,27 @@ applications</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>selecting files or directories.
-If nothing or a non-existing file/direcoty is selected, the return is “0”.
-Otherwise the file/directory is returned.</p></li>
+If nothing or a non-existing file/direcoty is selected, the return is
+“None”. Otherwise the file/directory is returned.</p></li>
 <li><p>waitbar</p></li>
 </ul>
 </div></blockquote>
 <dl class="py function">
 <dt class="sig sig-object py" id="misc.askquestion">
-<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">askquestion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">Selection'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Question</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Are</span> <span class="pre">we</span> <span class="pre">done</span> <span class="pre">yet?'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#askquestion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.askquestion" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">askquestion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialog_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Interactive</span> <span class="pre">Selection'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Question</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Are</span> <span class="pre">we</span> <span class="pre">done</span> <span class="pre">yet?'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/misc.html#askquestion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.askquestion" title="Link to this definition">¶</a></dt>
 <dd><p>Ask the user a yes/no question</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
-<li><p><strong>Question</strong> (<em>string</em>) – Question to the user</p></li>
+<li><p><strong>dialog_title</strong> (<em>Window title</em>) – </p></li>
+<li><p><strong>Question</strong> (<em>Question to the user</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>yes_no</strong> – Selected answer.</p>
+<dd class="field-even"><p><strong>yes_no</strong></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>boolean</p>
+<dd class="field-odd"><p>Selected answer</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -92,20 +92,20 @@ Otherwise the file/directory is returned.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="misc.get_dir">
-<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">Directory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_dir" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dialog_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Select</span> <span class="pre">Directory'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/misc.html#get_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_dir" title="Link to this definition">¶</a></dt>
 <dd><p>Select a directory</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
-<li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</p></li>
+<li><p><strong>dialog_title</strong> (<em>Window title</em>) – </p></li>
+<li><p><strong>default_name</strong> (<em>Can be a directory AND filename</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>directory</strong> – Selected directory.</p>
+<dd class="field-even"><p><strong>directory</strong></p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>string</p>
+<dd class="field-odd"><p>Selected directory</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -116,42 +116,41 @@ Otherwise the file/directory is returned.</p></li>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="misc.get_file">
-<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Select</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#get_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_file" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">get_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Select</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="_modules/misc.html#get_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.get_file" title="Link to this definition">¶</a></dt>
 <dd><p>Selecting an existing file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>FilterSpec</strong> (<em>query-string</em>) – File filters</p></li>
-<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title</p></li>
-<li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename</p></li>
+<li><p><strong>filter_spec</strong> (<em>File filters</em>) – </p></li>
+<li><p><strong>dialog_title</strong> (<em>Window title</em>) – </p></li>
+<li><p><strong>default_name</strong> (<em>Can be a directory AND filename</em>) – </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>filename</strong> (<em>string</em>) – selected existing file</p></li>
-<li><p><strong>pathname</strong> (<em>string</em>) – selected path</p></li>
-</ul>
-</p>
+<dd class="field-even"><p><strong>filename</strong> – If no file is selected, ‘None’ is returned</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>selected existing file (partent + name)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="n">myPath</span><span class="p">)</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">getfile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="misc.progressbar">
-<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">progressbar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#progressbar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.progressbar" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">progressbar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span></span></span><a class="reference internal" href="_modules/misc.html#progressbar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.progressbar" title="Link to this definition">¶</a></dt>
 <dd><p>Shows a progress-bar on the commandline.
 This has the advantage that you don’t need to bother with windows
 managers. Nifty coding!</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>it</strong> (<em>integer array</em>) – index variable</p></li>
-<li><p><strong>prefix</strong> (<em>string</em>) – Text preceding the progress-bar</p></li>
-<li><p><strong>size</strong> (<em>integer</em>) – Length of progress-bar</p></li>
+<li><p><strong>it</strong> (<em>index variable</em><em> (</em><em>integer</em><em>)</em>) – </p></li>
+<li><p><strong>prefix</strong> (<em>Text preceding the progress-bar</em>) – </p></li>
+<li><p><strong>size</strong> (<em>Length</em><em> of </em><em>progress-bar</em>) – </p></li>
 </ul>
 </dd>
 </dl>
@@ -166,26 +165,25 @@ managers. Nifty coding!</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="misc.save_file">
-<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">save_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">FilterSpec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DialogTitle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Save</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DefaultName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/misc.html#save_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.save_file" title="Link to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">misc.</span></span><span class="sig-name descname"><span class="pre">save_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dialog_title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Save</span> <span class="pre">File:</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">PathLike</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="_modules/misc.html#save_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#misc.save_file" title="Link to this definition">¶</a></dt>
 <dd><p>Selecting an existing or new file:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>FilterSpec</strong> (<em>string</em>) – File filters.</p></li>
-<li><p><strong>DialogTitle</strong> (<em>string</em>) – Window title.</p></li>
-<li><p><strong>DefaultName</strong> (<em>string</em>) – Can be a directory AND filename.</p></li>
+<li><p><strong>filter_spec</strong> (<em>string</em>) – File filters.</p></li>
+<li><p><strong>dialog_title</strong> (<em>string</em>) – Window title.</p></li>
+<li><p><strong>default_name</strong> (<em>string</em>) – Can be a directory AND filename.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>filename</strong> (<em>string</em>) – Selected file.</p></li>
-<li><p><strong>pathname</strong> (<em>string</em>) – Selecte path.</p></li>
-</ul>
-</p>
+<dd class="field-even"><p><strong>selected_file</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Selected file (parent + name)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">myFile</span><span class="p">,</span> <span class="n">myPath</span><span class="p">)</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">savefile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">selected_file</span> <span class="o">=</span> <span class="n">skinematics</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">savefile</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">,</span> <span class="s1">&#39;Testing file-selection&#39;</span><span class="p">,</span> <span class="s1">&#39;c:</span><span class="se">\t</span><span class="s1">emp</span><span class="se">\t</span><span class="s1">est.py&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -198,7 +196,7 @@ managers. Nifty coding!</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -230,7 +228,7 @@ managers. Nifty coding!</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<search id="searchbox" style="display: none" role="search">
+<div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -238,13 +236,13 @@ managers. Nifty coding!</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</search>
+</div>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="Related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -262,7 +260,7 @@ managers. Nifty coding!</p>
     </div>
     <div class="footer" role="contentinfo">
     &#169; Copyright 2024, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.4.7.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>
