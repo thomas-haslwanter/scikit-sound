@@ -1,9 +1,10 @@
-![Title](docs/Images/scikit_sound.png)
+![Title](images/scikit_sound.png)
 ============
+
 scikit-sound
 ============
 
-*scikit-sound* contains functions for working with sound 
+*scikit-sound* contains functions for working with sound
 
 Dependencies
 ------------
@@ -34,19 +35,19 @@ Sound Processing Utilities
 ==========================
 
 - sounds.Sound ... class, with methods
-    * generate_sound
-    * get_info
-    * play
-    * read_sound
-    * summary
-    * write_wav
+  - generate_sound
+  - get_info
+  - play
+  - read_sound
+  - summary
+  - write_wav
 
 Misc Other Utilities
 ====================
 
 - misc ... GUI routines for standard file- and directory-handling
-   * askquestion
-   * get_dir
-   * get_file
-   * progressbar
-   * save_file
+  - askquestion
+  - get_dir
+  - get_file
+  - progressbar
+  - save_file
