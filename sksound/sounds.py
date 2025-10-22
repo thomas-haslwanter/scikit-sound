@@ -134,11 +134,11 @@ class FFMPEG_info:
         If FFMPEG is not installed, these are set to "None".
         """
 
-        ffmpeg_installed = misc.askquestion(DialogTitle='FFMPEG Check',
+        ffmpeg_installed = misc.askquestion(dialog_title='FFMPEG Check',
                                            Question='Is FFMPEG installed?')
 
         if ffmpeg_installed:
-            ffmpeg_dir = misc.get_dir(DialogTitle='Please select the directory where FFMPEG (binary) is installed:')
+            ffmpeg_dir = misc.get_dir(dialog_title='Please select the directory where FFMPEG (binary) is installed:')
 
 
             if sys.platform=='win32':

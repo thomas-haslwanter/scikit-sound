@@ -1,13 +1,15 @@
-[tool.poetry]
+[project]
 name = "scikit-sound"
-version = "0.3.1"
-description  = "Python utilites for working with sound signals"
-authors = ["Thomas Haslwanter <thomas.haslwanter@fh-ooe.at>"]
+version = "0.3.2"
+description = "Python utilites for working with sound signals"
+authors = [{ name = "Thomas Haslwanter", email = "thomas.haslwanter@fh-ooe.at" }]
+requires-python = ">=3.9"
 readme = "README.md"
 license = "BSD-3-Clause"
-homepage = "http://work.thaslwanter.at/sksound/html"
-repository = "https://github.com/thomas-haslwanter/scikit-sound"
-keywords = ["sound", "auditory signals"]
+keywords = [
+    "sound",
+    "auditory signals",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
@@ -16,26 +18,43 @@ classifiers = [
     "License :: OSI Approved :: BSD License",
     "Topic :: Scientific/Engineering",
 ]
-packages = [
-    {include = "sksound" },
-    {include = "tests" },
+dependencies = [
+    "docutils>= 0.3",
+    "numpy>= 1.13.0",
+    "appdirs>= 1.4.3",
+    "pyyaml>= 5.3.1",
+    "scipy>= 1.5",
+    "pygame>= 2.0 ; sys_platform == 'linux'",
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.9"
-docutils = ">= 0.3"
-numpy = ">= 1.13.0"
-appdirs = ">= 1.4.3"
-pyyaml = ">= 5.3.1"
-scipy = ">= 1.5"
-pygame = [
-        { platform = "linux", version = ">= 2.0"},
-    ]
+[project.urls]
+Homepage = "http://work.thaslwanter.at/sksound/html"
+Repository = "https://github.com/thomas-haslwanter/scikit-sound"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^5.2"
-sphinx = "^7.3.7"
+[dependency-groups]
+dev = [
+    "pytest~=5.2",
+    "sphinx>=7.3.7,<8",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "sksound",
+    "tests",
+]
+
+[tool.hatch.build.targets.wheel]
+include = [
+    "sksound",
+    "tests",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "postry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
