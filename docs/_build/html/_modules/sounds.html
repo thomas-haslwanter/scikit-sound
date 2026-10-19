@@ -4,18 +4,18 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sounds &#8212; scikit-sound 0.3.0 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=9936e48f" />
+    <title>sounds &#8212; scikit-sound 0.3.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=65e81a15" />
     
-    <script src="../_static/documentation_options.js?v=e259d695"></script>
-    <script src="../_static/doctools.js?v=888ff710"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/documentation_options.js?v=d5a15cff"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -24,7 +24,7 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
@@ -78,27 +78,27 @@
 <span class="c1"># &quot;ffmpeg&quot; has to be installed externally, into the location listed below</span>
 <span class="c1"># You can obtain it for free from http://ffmpeg.org</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">wavfile</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">subprocess</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">wavfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="kn">import</span> <span class="nn">appdirs</span>
-<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">appdirs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
 
 <span class="c1"># The following construct is required since I want to run the module as a script</span>
 <span class="c1"># inside the sksound-directory</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">file_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
 <span class="k">if</span> <span class="n">file_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">file_dir</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">misc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">misc</span>
 
 <span class="c1"># from sksound import misc</span>
 
@@ -106,21 +106,21 @@
 <span class="c1"># For the other packages you need the module &quot;pygame&quot;</span>
 
 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">==</span><span class="s1">&#39;win32&#39;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">winsound</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">winsound</span>
 <span class="k">elif</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;linux&#39;</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">pygame</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pygame</span>
 
 
 <div class="viewcode-block" id="NoFFMPEG_Error">
 <a class="viewcode-back" href="../sounds.html#sounds.NoFFMPEG_Error">[docs]</a>
-<span class="k">class</span> <span class="nc">NoFFMPEG_Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">NoFFMPEG_Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
 
 
 <div class="viewcode-block" id="FFMPEG_info">
 <a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info">[docs]</a>
-<span class="k">class</span> <span class="nc">FFMPEG_info</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FFMPEG_info</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Class for storing the config-info for FFMPEG.</span>
@@ -137,7 +137,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set the name of the config-file, and the properties</span>
 <span class="sd">        &quot;ffmpeg&quot; and &quot;ffplay&quot; of the FFMPEG_info object&quot;&quot;&quot;</span>
 
@@ -163,15 +163,17 @@
             <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">in_file</span><span class="p">:</span>
-                <span class="n">info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">]</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s1">&#39;ffplay&#39;</span><span class="p">]</span>
-
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">in_file</span><span class="p">:</span>
+                    <span class="n">info</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;ffmpeg&quot;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="n">info</span><span class="p">[</span><span class="s2">&quot;ffplay&quot;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">JSONDecodeError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 
 <div class="viewcode-block" id="FFMPEG_info.set">
 <a class="viewcode-back" href="../sounds.html#sounds.FFMPEG_info.set">[docs]</a>
-    <span class="k">def</span> <span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the config-filename, and write the FFMPEG_info</span>
 <span class="sd">        properties &quot;ffmpeg&quot; and &quot;ffplay&quot; to that config-file.</span>
@@ -179,19 +181,19 @@
 <span class="sd">        If FFMPEG is not installed, these are set to &quot;None&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">ffmpeg_installed</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">askquestion</span><span class="p">(</span><span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;FFMPEG Check&#39;</span><span class="p">,</span>
+        <span class="n">ffmpeg_installed</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">askquestion</span><span class="p">(</span><span class="n">dialog_title</span><span class="o">=</span><span class="s1">&#39;FFMPEG Check&#39;</span><span class="p">,</span>
                                            <span class="n">Question</span><span class="o">=</span><span class="s1">&#39;Is FFMPEG installed?&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">ffmpeg_installed</span><span class="p">:</span>
-            <span class="n">ffmpeg_dir</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">get_dir</span><span class="p">(</span><span class="n">DialogTitle</span><span class="o">=</span><span class="s1">&#39;Please select the directory where FFMPEG (binary) is installed:&#39;</span><span class="p">)</span>
+            <span class="n">ffmpeg_dir</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">get_dir</span><span class="p">(</span><span class="n">dialog_title</span><span class="o">=</span><span class="s1">&#39;Please select the directory where FFMPEG (binary) is installed:&#39;</span><span class="p">)</span>
 
 
             <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="o">==</span><span class="s1">&#39;win32&#39;</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffmpeg.exe&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffplay.exe&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffmpeg.exe&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ffmpeg_dir</span> <span class="o">/</span> <span class="s2">&quot;ffplay.exe&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffmpeg&#39;</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffplay&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">ffplay</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ffmpeg_dir</span><span class="o">/</span><span class="s1">&#39;ffplay&#39;</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span><span class="p">):</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorry, </span><span class="si">{0}</span><span class="s1"> does not exist!&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ffmpeg</span><span class="p">))</span>
@@ -223,7 +225,7 @@
 
 <div class="viewcode-block" id="Sound">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound">[docs]</a>
-<span class="k">class</span> <span class="nc">Sound</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Sound</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Class for working with sound in Python.</span>
@@ -288,7 +290,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">:</span> <span class="nb">str</span><span class="o">|</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">inData</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inRate</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">:</span> <span class="nb">str</span><span class="o">|</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">inData</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">inRate</span><span class="p">:</span>
                  <span class="nb">float</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Initialize a Sound object &quot;&quot;&quot;</span>
 
@@ -318,7 +320,7 @@
 
 <div class="viewcode-block" id="Sound.read_sound">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound.read_sound">[docs]</a>
-    <span class="k">def</span> <span class="nf">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inFile</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Read data from a sound-file.</span>
@@ -387,7 +389,7 @@
 
 <div class="viewcode-block" id="Sound.play">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound.play">[docs]</a>
-    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">       Play the stored sound</span>
 
@@ -464,7 +466,7 @@
 
 <div class="viewcode-block" id="Sound.generate_sound">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound.generate_sound">[docs]</a>
-    <span class="k">def</span> <span class="nf">generate_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Set the properties of a Sound-object. &quot;&quot;&quot;</span>
 
         <span class="c1"># If the data are not in an integer format (if they are e.g. &quot;float&quot;), convert</span>
@@ -483,7 +485,7 @@
 
 <div class="viewcode-block" id="Sound.write_wav">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound.write_wav">[docs]</a>
-    <span class="k">def</span> <span class="nf">write_wav</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write_wav</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_file</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="o">|</span><span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Write sound data to a WAV-file.</span>
@@ -524,7 +526,7 @@
 
 <div class="viewcode-block" id="Sound.get_info">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound.get_info">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Return information about the sound.</span>
 
@@ -560,7 +562,7 @@
 
 <div class="viewcode-block" id="Sound.summary">
 <a class="viewcode-back" href="../sounds.html#sounds.Sound.summary">[docs]</a>
-    <span class="k">def</span> <span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Display information about the sound.</span>
 
@@ -592,7 +594,7 @@
 
 
 
-    <span class="k">def</span> <span class="nf">_setInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setInfo</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Set the information properties of that sound &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
@@ -605,7 +607,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">totalSamples</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="c1"># [sec]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">dataType</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_selectInput</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_selectInput</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">os</span><span class="o">.</span><span class="n">PathLike</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; GUI for the selection of an in-file. &quot;&quot;&quot;</span>
 
         <span class="n">my_file</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">get_file</span><span class="p">(</span><span class="n">filter_spec</span><span class="o">=</span><span class="s1">&#39;*.wav&#39;</span><span class="p">,</span>
@@ -623,11 +625,11 @@
 
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../sounds.html#sounds.main">[docs]</a>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Main function, to test the module &quot;&quot;&quot;</span>
 
-    <span class="kn">import</span> <span class="nn">os</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
     <span class="c1"># Re-set FFMPEG</span>
     <span class="c1"># ffmpeg = FFMPEG_info()</span>
@@ -688,9 +690,9 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -698,13 +700,13 @@
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -713,14 +715,14 @@
         <li class="right" >
           <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">scikit-sound 0.3.3 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">sounds</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-    &#169; Copyright 2024, thomas haslwanter.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
+    &#169; Copyright 2026, thomas haslwanter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>

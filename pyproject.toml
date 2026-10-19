@@ -1,6 +1,6 @@
 [project]
 name = "scikit-sound"
-version = "0.3.2"
+version = "0.3.3"
 description = "Python utilites for working with sound signals"
 authors = [{ name = "Thomas Haslwanter", email = "thomas.haslwanter@fh-ooe.at" }]
 requires-python = ">=3.9"

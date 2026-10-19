@@ -16,9 +16,9 @@ Homepage
 
 <http://work.thaslwanter.at/sksound/html/>
 
-Author: Thomas Haslwanter Date: 08-10-2024 Ver: 0.3.0 Licence: BSD
+Author: Thomas Haslwanter Date: 19-10-2026 Ver: 0.3.3 Licence: BSD
 2-Clause License (<http://opensource.org/licenses/BSD-2-Clause>)
-Copyright (c) 2024, Thomas Haslwanter All rights reserved.
+Copyright (c) 2026, Thomas Haslwanter All rights reserved.
 
 Installation
 ------------
@@ -51,3 +51,8 @@ Misc Other Utilities
   - get_file
   - progressbar
   - save_file
+
+Set FFMPEG-path by hand
+=======================
+
+This can be done with `sksound.sounds.FFMPEG_info().set()`

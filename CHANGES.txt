@@ -26,3 +26,4 @@ v0.2.14, 26-Feb-2024 -- moved 'tests' one level up, cleaned up 'tests'
 v0.2.15, 07-Oct-2024 -- made Sound.__init__ compatible with pathlib
 v0.3.1, 14-Nov-2024 -- added type hints, checked pathlib-compatability
 v0.3.2, 21-Oct-2025 -- fixed a bug in sounds.py (DialogTitle -> dialog_title)
+v0.3.3, 19-Oct-2026 -- fixed a problem with saving the FFMPEG-path

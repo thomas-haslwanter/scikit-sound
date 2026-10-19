@@ -61,10 +61,17 @@ class TestSequenceFunctions(unittest.TestCase):
         inSound.play()
 
         # Info about sound, and its display
-        (source, rate, numChannels, totalSamples, duration, bitsPerSample) = (
+        source, rate, numChannels, totalSamples, duration, bitsPerSample = (
             inSound.get_info()
         )
         inSound.summary()
+
+
+    def test_mp3(self):
+        """Checks if an MP3-file is played correctly. This also checks FFMPEG."""
+        in_file = "YouAreNotIt.mp3"
+        inSound = sounds.Sound(in_file)
+        inSound.play()
 
     def test_sound_write(self):
         # Test with self-generated data
@@ -80,6 +87,14 @@ class TestSequenceFunctions(unittest.TestCase):
         out_file = inSound.write_wav()
         new_file = Path(out_file)
         assert new_file.stat().st_size > 0
+
+
+    def test_ffmpeg(self):
+        ffmpeg_info = sounds.FFMPEG_info()
+        if ffmpeg_info.ffmpeg:
+            print(f"FFMPEG found at: {ffmpeg_info.ffmpeg}")
+        else:
+            print("FFMPEG not found")
 
 
 if __name__ == "__main__":

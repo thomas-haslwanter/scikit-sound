@@ -120,11 +120,13 @@ class FFMPEG_info:
             except FileNotFoundError:
                 self.set()
         else:
-            with open(self.config_file, 'r') as in_file:
-                info = json.load(in_file)
-                self.ffmpeg = info['ffmpeg']
-                self.ffplay = info['ffplay']
-
+            try:
+                with open(self.config_file, "r") as in_file:
+                    info = json.load(in_file)
+                self.ffmpeg = info["ffmpeg"]
+                self.ffplay = info["ffplay"]
+            except json.decoder.JSONDecodeError:
+                self.set()
 
     def set(self):
         """
@@ -142,11 +144,11 @@ class FFMPEG_info:
 
 
             if sys.platform=='win32':
-                self.ffmpeg = ffmpeg_dir/'ffmpeg.exe'
-                self.ffplay = ffmpeg_dir/'ffplay.exe'
+                self.ffmpeg = str(ffmpeg_dir/'ffmpeg.exe')
+                self.ffplay = str(ffmpeg_dir / "ffplay.exe")
             else:
-                self.ffmpeg = ffmpeg_dir/'ffmpeg'
-                self.ffplay = ffmpeg_dir/'ffplay'
+                self.ffmpeg = str(ffmpeg_dir/'ffmpeg')
+                self.ffplay = str(ffmpeg_dir/'ffplay')
 
             if not os.path.exists(self.ffmpeg):
                 print('Sorry, {0} does not exist!'.format(self.ffmpeg))
