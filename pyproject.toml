@@ -34,7 +34,7 @@ Repository = "https://github.com/thomas-haslwanter/scikit-sound"
 [dependency-groups]
 dev = [
     "pytest~=5.2",
-    "sphinx>=7.3.7,<8",
+    "sphinx>=8.0",
 ]
 
 [tool.hatch.build.targets.sdist]
