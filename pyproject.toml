@@ -33,7 +33,7 @@ Repository = "https://github.com/thomas-haslwanter/scikit-sound"
 
 [dependency-groups]
 dev = [
-    "pytest~=5.2",
+    "pytest>=5.2,<10.0",
     "sphinx>=8.0",
 ]
 
